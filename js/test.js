@@ -5,7 +5,7 @@ $(document).ready(function(){
 		alert(email);
 		var posts =$.getJSON("http://52.79.42.151:3001/api/users", function(result){
 	        $.each(result, function(i, field){
-	            data.append(i.name + " ");
+	            data.append(i._id + " ");
 	        });alret(data)
 	    });
 		

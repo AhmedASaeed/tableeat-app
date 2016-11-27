@@ -247,6 +247,7 @@ th {
   }
   .label {
     border: 1px solid #000;
+    font-family : "Calibri";
   }
   .table {
     border-collapse: collapse !important;
@@ -6767,6 +6768,8 @@ background : #41A08D;
 text-align : center;
 font-family : "Calibri";
 }
+
+
 
 .radio-item label {
   color: #666;

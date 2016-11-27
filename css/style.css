@@ -6763,11 +6763,16 @@ button.close {
 }
 
 #header_login, 
-#header_register,
-#header_search{
+#header_register{
 border-radius : 8px;
 background : #41A08D;
 text-align : center;
+font-family : "Calibri";
+}
+
+#header_search{
+border-radius : 8px;
+background : #41A08D;
 font-family : "Calibri";
 }
 
@@ -6794,4 +6799,11 @@ font-family : "Calibri";
 	background-color: white;
 }
 
+#search_page{
+	background-color: #EBEBEB;
+}
+
+#title_header{
+	margin-top:12px;
+}
 /*# sourceMappingURL=bootstrap.css.map */

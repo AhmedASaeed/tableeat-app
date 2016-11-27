@@ -6757,19 +6757,19 @@ button.close {
 }
 
 #login,
-#register{
+#register,
+#search{
 	background-color: #4EB8A2;
 }
 
 #header_login, 
-#header_register{
+#header_register,
+#header_search{
 border-radius : 8px;
 background : #41A08D;
 text-align : center;
 font-family : "Calibri";
 }
-
-
 
 .radio-item label {
   color: #666;

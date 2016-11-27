@@ -16,25 +16,26 @@
 		<!-- /header -->
 
 		<div class="ui-content" id="register">
-		<br>
+			<br>
 			<div>
-				<form name="register" action="" method="post" accept-charset="utf-8">
+				<form name="register" action="search.html" method="post" accept-charset="utf-8">
 					<div class="container">
-						<label for="usermail">Email</label>
-					    <input type="email" name="usermail" id="email1" placeholder="yourname@email.com" required>
-					    <label for="password">Password</label>
-					    <input type="password" name="password" id="pass1" placeholder="password" required>
-						<label for="password">Confirm Password</label>
-					    <input type="password" name="password" id="pass2" placeholder="password" required onkeyup="checkPass(); return false;">
+						<label for="usermail">Email</label> <input type="email"
+							name="usermail" id="email1" placeholder="yourname@email.com"
+							required> <label for="password">Password</label> <input
+							type="password" name="password" id="pass1" placeholder="password"
+							required> <label for="password">Confirm Password</label>
+						<input type="password" name="password" id="pass2"
+							placeholder="password" required
+							onkeyup="checkPass(); return false;">
 					</div>
 
 					<div class="container">
-					<label><b>Are you a:</b></label><br>
-						<input id="radio1" type="radio" name="group1" value="Customer">Customer
-						<input id="radio2" type="radio" name="group1" value="Restaurant owner">Restaurant owner
-						<br>
-						<br>
-						<input type="submit" value="Register" id="register" onClick="createDb();">				
+						<label><b>Are you a:</b></label><br> <input id="radio1"
+							type="radio" name="group1" value="Customer">Customer <input
+							id="radio2" type="radio" name="group1" value="Restaurant owner">Restaurant
+						owner <br> <br> <input type="submit" value="Register"
+							id="register" onClick="createDb();">
 					</div>
 
 				</form>

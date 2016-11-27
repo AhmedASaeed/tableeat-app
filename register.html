@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<link rel="stylesheet" href="./lib/tau/mobile/theme/default/tau.css">
+<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<title>TableEat - Tizen application to book a table at a restaurant</title>
+</head>
+
+<body>
+	<div class="ui-page" id="section2">
+		<div class="ui-header" id="header_register">
+			<h3>New user</h3>
+		</div>
+		<!-- /header -->
+
+		<div class="ui-content" id="register">
+		<br>
+			<div>
+				<form name="register" action="" method="post" accept-charset="utf-8">
+					<div class="container">
+						<label for="usermail">Email</label>
+					    <input type="email" name="usermail" id="email1" placeholder="yourname@email.com" required>
+					    <label for="password">Password</label>
+					    <input type="password" name="password" id="pass1" placeholder="password" required>
+						<label for="password">Confirm Password</label>
+					    <input type="password" name="password" id="pass2" placeholder="password" required onkeyup="checkPass(); return false;">
+					</div>
+
+					<div class="container">
+					<label><b>Are you a:</b></label><br>
+						<input id="radio1" type="radio" name="group1" value="Customer">Customer
+						<input id="radio2" type="radio" name="group1" value="Restaurant owner">Restaurant owner
+						<br>
+						<br>
+						<input type="submit" value="Register" id="register" onClick="createDb();">				
+					</div>
+
+				</form>
+			</div>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- /page -->
+
+	<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>
+	<script type="text/javascript" src="./lib/jquery.js"></script>
+	<script src="./js/main.js"></script>
+	<script src="./js/test.js"></script>
+	<script src="https://tableeatedb-999a.restdb.io/rest/_jsapi.js"></script>
+</body>
+</html>

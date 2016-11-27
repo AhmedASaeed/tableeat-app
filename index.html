@@ -5,55 +5,50 @@
 	<meta name="viewport" content="width=device-width,user-scalable=no"/>
 	<link rel="stylesheet"  href="./lib/tau/mobile/theme/default/tau.css">
 	<link rel="stylesheet" type="text/css" href="./css/style.css"/>
-	<title>Tizen Web IDE - Template - Tizen - Tizen Web UI Framework - Single-Page</title>
+	<title>TableEat - Tizen application to book a table at a restaurant</title>
 </head>
 
 <!-- --Login Page -->
 <body>
-	<div class="ui-page ui-page-active" id="login">
-			<div class="ui-header">
-				<h1>Table Eat </h1>
-				<h2>Log In</h2>
+	<div class="ui-page ui-page-active">
+			<div class="ui-header" id="header_login">
+			<img src="logo.png" id="logo" alt="Logo" height="100" width="100"/>
+				<h1>TableEat</h1>
+				<h1>Book a table in a restaurant</h1>
+				<h3>Log In</h3>
 			</div><!-- /header -->
-				<div class="ui-content">
-						<form id ="login" name="login" action=""  accept-charset="utf-8">
+			
+			<div class="ui-content" id="login">
+			<br>
+			<div>
+			<form id ="login" name="login" action=""  accept-charset="utf-8">
+				<div class="container">
+						
 						    	<label for="usermail">Email</label>
 						    	<input type="email" name="usermail"  id="email" placeholder="yourname@email.com" required>
 						    	<label for="password">Password</label>
 						    	<input type="password" name="password" id="pass" placeholder="password" required>
-						    	<input type="submit" id="login" value="Login" onClick="testJS()">  
-						</form>
-					<a href="#register">Don't have an account</a>
-				</div>			
-	</div><!-- /end LogIn Page end -->
-	
-	
-	
-		<!-- --Register Page -->
-		<div class="ui-page" id="register">
-
-		<div class="ui-header">
-			<h1>Table Eat </h1>
-			<h2>Register</h2>
-		</div><!-- /header -->
-				<div class="ui-content">
-					<form name="register" action="" method="post" accept-charset="utf-8">
-					    <label for="usermail">Email</label>
-					    <input type="email" name="usermail" id="email1" placeholder="yourname@email.com" required>
-					    <label for="password">Password</label>
-					    <input type="password" name="password" id="pass1" placeholder="password" required>
-						<label for="password">Confirm Password</label>
-					    <input type="password" name="password" id="pass2" placeholder="password" required onkeyup="checkPass(); return false;">
-					    <input type="submit" value="Register" onClick="createDb();">
-					</form>
-					<a href="#login">Already registered</a>
-				</div>	
-	</div><!-- /end of register Page end -->
-
+						    	<br>
+						    	<input type="submit" id="login" value="Login" onClick="testJS()">
+				</div>  
+						
+				<br>
+					<div class="container">
+						<a href="register.html">Don't have an account? Register</a> 
+						<br>
+						<span class="psw">
+							<a href="#">Forgot password?</a>
+						</span>
+					</div>
+			</form>
+			</div><!-- /end LogIn Page end -->
+		</div>
+		</div>
 	<script type="text/javascript" src="./lib/tau/mobile/js/tau.js"></script>
 	<script type="text/javascript" src="./lib/jquery.js"></script>
 	<script src="./js/main.js"></script>
 	<script src="./js/test.js"></script>
 	<script src="https://tableeatedb-999a.restdb.io/rest/_jsapi.js"></script>
 </body>
+
 </html>

@@ -247,7 +247,6 @@ th {
   }
   .label {
     border: 1px solid #000;
-    font-family : "Calibri";
   }
   .table {
     border-collapse: collapse !important;
@@ -6754,56 +6753,5 @@ button.close {
   .hidden-print {
     display: none !important;
   }
-}
-
-#login,
-#register,
-#search{
-	background-color: #4EB8A2;
-}
-
-#header_login, 
-#header_register{
-border-radius : 8px;
-background : #41A08D;
-text-align : center;
-font-family : "Calibri";
-}
-
-#header_search{
-border-radius : 8px;
-background : #41A08D;
-font-family : "Calibri";
-}
-
-.radio-item label {
-  color: #666;
-  font-weight: normal;
-}
-
-.radio-item label:before {
-  content: " ";
-  display: inline-block;
-  position: relative;
-  top: 5px;
-  margin: 0 5px 0 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 11px;
-  border: 2px solid #004c97;
-  background-color: white;
-}
-
-#radio1,
-#radio2{
-	background-color: white;
-}
-
-#search_page{
-	background-color: #EBEBEB;
-}
-
-#title_header{
-	margin-top:12px;
 }
 /*# sourceMappingURL=bootstrap.css.map */

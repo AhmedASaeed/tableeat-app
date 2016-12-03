@@ -15,10 +15,8 @@
 <!-- Bootstrap Core CSS -->
 <link href="./css/bootstrap.min.css" rel="stylesheet">
 
-
 <!-- Custom CSS -->
-<link href="css/simple-sidebar.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="./css/style.css" />
+<link href="./css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="./css/style1.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -37,7 +35,8 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="#menu-toggle">Menu</a></li>
+					<li class="sidebar-brand"><a href="#menu-toggle">emailuser@gmail.com</a></li>
+					<img src="profile.png" id="profile" height="50" width="50">
 				<li><a href="search.html">Search for a restaurant</a></li>
 				<li><a href="#">My orders</a></li>
 				<li><a href="#">My account</a></li>
@@ -48,20 +47,29 @@
 		</div>
 		<!-- /#sidebar-wrapper -->
 		
-		<div class="ui-header" id="header_search">
-		<img src="menu.png" href="#menu-toggle" id="menu-toggle">
-			
+		<div class="ui-header" id="header_page">
+			<img src="menu.png" href="#menu-toggle" id="menu-toggle">
 			<h1 id="title_header">Search for a restaurant</h1>
 		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 		
-			<div class="container-fluid">
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-			<div id="map" ></div>
-						
+			<div id="map"></div>
+			
+			<div class="container-fluid" id="list">
+  				<div class="row">
+   					 <div class="col-sm-12">
+   					 	<p>Restaurant 1</p>
+   					 </div>
+ 				</div>
+  				<div class="row">
+   					<div class="col-sm-4"><p>Restaurant 2-1</p></div>
+    				<div class="col-sm-4"><p>Restaurant 2-2</p></div>
+    				<div class="col-sm-4"><p>Restaurant 2-3</p></div>
+  				</div>
 			</div>
-		
+	
 		<!-- /#page-content-wrapper -->
 		</div>
 	</div>
@@ -75,7 +83,7 @@
 
 	<!-- Menu Toggle Script -->
     <script type="text/javascript" src="./js/map.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initMap" async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>
 

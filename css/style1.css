@@ -4,8 +4,10 @@
 
 
 body {
-  background: #c1bdba;
+  background: rgba(19, 35, 47, 0.9);
   font-family: 'Titillium Web', sans-serif;
+  width:100%;
+  margin: 0px auto;
 }
 
 a {
@@ -22,8 +24,7 @@ a:hover {
   background: rgba(19, 35, 47, 0.9);
   padding: 20px;
   max-width: 100%;
-  margin-top: 187px;
-  border-radius: 4px;
+  margin-top: 0px;
   box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
 }
 
@@ -68,7 +69,6 @@ h1 {
   text-align: center;
   color: #ffffff;
   font-weight: 300;
-
 }
 
 label {
@@ -181,8 +181,9 @@ textarea {
 
 #header_login, 
 #header_register{
-border-radius : 8px;
-background : #41A08D;
+border-bottom-left-radius: 6px;
+border-bottom-right-radius: 6px;
+background : #1ab188;
 text-align : center;
 font-family : 'Titillium Web', sans-serif;
 font-size: 11px;
@@ -213,7 +214,6 @@ font-size: 11px;
 	background-color: white;
 }
 .ui-header {
-  position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
@@ -240,4 +240,52 @@ font-size: 11px;
   overflow-scrolling: touch;
 }
 
+#map{
+	width: 100%;
+	height:600px;
+}
+.controls {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 2px 0 0 2px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  height: 32px;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input {
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 300;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 300px;
+}
+
+#pac-input:focus {
+  border-color: #4d90fe;
+}
+
+.pac-container {
+  font-family: Roboto;
+}
+
+#type-selector {
+  color: #fff;
+  background-color: #4d90fe;
+  padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 300;
+}
+ #target {
+        width: 345px;
+}
 

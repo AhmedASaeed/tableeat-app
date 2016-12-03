@@ -6775,7 +6775,11 @@ border-radius : 8px;
 background : #41A08D;
 font-family : "Calibri";
 }
-
+#myMap {
+   height: 350px;
+   padding: 20px;
+   max-width: 100%;
+}
 .radio-item label {
   color: #666;
   font-weight: normal;

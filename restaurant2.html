@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=no" />
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>TableEat - Tizen application to book a table at a
+	restaurant</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="./css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href="./css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="./css/style1.css">
+<!--<link rel="stylesheet" href="./css/restaurantpagecss.css">-->
+
+ 
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+					<li class="sidebar-brand"><a href="#menu-toggle">emailuser@gmail.com</a></li>
+					<img src="profile.png" id="profile" height="50" width="50">
+				<li><a href="search.html">Search for a restaurant</a></li>
+				<li><a href="#">My orders</a></li>
+				<li><a href="#">My account</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">FAQ</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+		
+		<div class="ui-header" id="header_page">
+			<img src="menu.png" href="#menu-toggle" id="menu-toggle">
+			<h1 id="title_header">Restaurant Name</h1>
+		</div>
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<div class="container-fluid">
+			
+			<div id="map"></div>
+			<div>
+				  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+				  <div class="panel-group" id="accordion">
+				    <div class="panel panel-default">
+				      <div class="panel-heading">
+				        <h4 class="panel-title">
+				          <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Menu</a>
+				        </h4>
+				      </div>
+				      <div id="collapse1" class="panel-collapse collapse in">
+				        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				      </div>
+				    </div>
+				    <div class="panel panel-default">
+				      <div class="panel-heading">
+				        <h4 class="panel-title">
+				          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Reservation</a>
+				        </h4>
+				      </div>
+				      <div id="collapse2" class="panel-collapse collapse">
+				        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				      </div>
+				    </div>
+				    <div class="panel panel-default">
+				      <div class="panel-heading">
+				        <h4 class="panel-title">
+				          <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Review</a>
+				        </h4>
+				      </div>
+				      <div id="collapse3" class="panel-collapse collapse">
+				        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				      </div>
+				    </div>
+				  </div> 
+				</div>
+			
+			
+			</div>
+		<!-- /#page-content-wrapper -->
+		</div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="./js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="./js/bootstrap.min.js"></script>
+
+	<!-- Menu Toggle Script -->
+    <script type="text/javascript" src="./js/map.js"></script>
+    <!--<script type="text/javascript" src="./js/restaurant.js"></script>-->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initAutocomplete" async defer></script>
+
+</body>
+
+</html>

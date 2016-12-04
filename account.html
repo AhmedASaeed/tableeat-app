@@ -15,6 +15,7 @@
 <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
+
 <!-- Custom CSS -->
 <link href="css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style1.css">
@@ -25,10 +26,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+
 </head>
 
-<body id="search_page">
+<body>
 
 	<div id="wrapper">
 
@@ -48,43 +49,21 @@
 		<!-- /#sidebar-wrapper -->
 		
 		<div class="ui-header" id="header_page">
-			<img src="images/menu.png" href="#menu-toggle" id="menu-toggle">
-			<h1 id="title_header">Search for a restaurant</h1>
+		<img src="images/menu.png" href="#menu-toggle" id="menu-toggle">
+			
+			<h1 id="title_header">My account</h1>
 		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 		
-			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-			<div id="map"></div>
-			
-			<div class="container-fluid" id="list">
-  				<ul class="results">
-    				<li class="restaurant">
-      					<img src="images/profile.png" >
-      					<h3 class="name">The Grasslands</h3>
-      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.</p>
-    				</li>
-      				<hr>
-    				<li class="restaurant">
-      					<img src="images/profile.png" >
-      					<h3 class="name">Paradise Found</h3>
-      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.</p>
-    				</li class="restaurant">
-					<hr>
-    				<li class="restaurant">
-      					<img src="images/profile.png" >
-      					<h3 class="name">Smoke On The Water</h3>
-      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.</p>
-    				</li>
-					<hr>
-    				<li class="restaurant">
-      					<img src="images/profile.png" >
-      					<h3 class="name">Headline</h3>
-      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod ultrices ante, ac laoreet nulla vestibulum adipiscing. Nam quis justo in augue auctor imperdiet.</p>
-    				</li>
-  				</ul>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+
+					</div>
+				</div>
 			</div>
-	
+		
 		<!-- /#page-content-wrapper -->
 		</div>
 	</div>
@@ -97,8 +76,12 @@
 	<script src="js/bootstrap.min.js"></script>
 
 	<!-- Menu Toggle Script -->
-    <script type="text/javascript" src="js/map.js"></script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initAutocomplete" async defer></script>
+	<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 </body>
 

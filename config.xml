@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/TAUSinglePage3" version="1.0.0" viewmodes="maximized">
-=======
-<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/TAUSinglePage3" version="1.0.0" viewmodes="maximized">
->>>>>>> c0992042addb674fd6b01b49d81dc4855aa1bd4c
     <access origin="http://googleapis.com" subdomains="true"></access>
     <access origin="http://gstatic.com" subdomains="true"></access>
     <access origin="http://google.com" subdomains="true"></access>
     <access origin="*" subdomains="true"></access>
     <tizen:application id="04iArsKOdl.TAUSinglePage3" package="04iArsKOdl" required_version="2.4"/>
-    <content src="restaurant2.html"/>
+    <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://tizen.org/feature/location.batch"/>
     <feature name="http://tizen.org/feature/location.gps"/>

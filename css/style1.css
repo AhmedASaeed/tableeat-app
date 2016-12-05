@@ -88,6 +88,11 @@ label .req {
   color: #1ab188;
 }
 
+.radio {
+  margin: 2px;
+  color: #ffffff;
+}
+
 label.active {
   -webkit-transform: translateY(50px);
           transform: translateY(50px);
@@ -190,12 +195,6 @@ font-size: 11px;
 }
 
 
-
-.radio-item label {
-  color: #666;
-  font-weight: normal;
-}
-
 .radio-item label:before {
   content: " ";
   display: inline-block;
@@ -209,10 +208,6 @@ font-size: 11px;
   background-color: white;
 }
 
-#radio1,
-#radio2{
-	background-color: white;
-}
 .ui-header {
   width: 100%;
   top: 0;

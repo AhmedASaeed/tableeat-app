@@ -32,7 +32,7 @@
 			<div class="tab-content">
 				<div id="signup">
 
-					<form id="signup-form" action="http://localhost:3000/api/register" method="post">
+					<form id="signup-form" action="http://52.79.42.151:3000/api/signup" method="post">
 
 						<div class="top-row">
 <!-- 							<div class="field-wrap">
@@ -71,23 +71,23 @@
 
 				<div id="login1">
 
-					<form action="/" method="post">
+					<form id="login-form" action="http://52.79.42.151:3000/api/login" method="post">
 
 						<div class="field-wrap">
 							<label> Email Address<span class="req">*</span>
-							</label> <input type="email" required autocomplete="off" />
+							</label> <input type="email" id="usernamel" name="username" required autocomplete="off" />
 						</div>
 
 						<div class="field-wrap">
 							<label> Password<span class="req">*</span>
-							</label> <input type="password" required autocomplete="off" />
+							</label> <input type="password" id="passwordl" name="password" required autocomplete="off" />
 						</div>
 
 						<p class="forgot">
 							<a href="#">Forgot Password?</a>
 						</p>
 
-						<button class="button button-block">Log In</button>
+						<button type="submit" id="login-button" class="button button-block">Log In</button>
 
 					</form>
 

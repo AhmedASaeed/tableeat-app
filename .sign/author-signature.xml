@@ -2,6 +2,7 @@
 <SignedInfo>
 <CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"></CanonicalizationMethod>
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
+<<<<<<< HEAD
 <Reference URI=".git%2FCOMMIT_EDITMSG">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>yvQ6YJDGOm+dwJZd/879BrBJUySpMQRvlzRM0YCKeCs=</DigestValue>
@@ -518,6 +519,8 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>5D4ONTNv+5NJBFkQR1SeS0swsM8yysCzU4AmCQ1NdAE=</DigestValue>
 </Reference>
+=======
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 <Reference URI="about.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>57gHo83I3dS4WyHiLwZu1X2m9214zNUvYipRu4Wn42c=</DigestValue>
@@ -528,7 +531,11 @@
 </Reference>
 <Reference URI="config.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<<<<<<< HEAD
 <DigestValue>tIRTCmK1G7+wYj6RqKNloowPpMF2rwWylPdRyfE8Fi4=</DigestValue>
+=======
+<DigestValue>6bvsI7jsnn05zjC7ZYXtnyeL/ygY1uTY62sIONkZTm0=</DigestValue>
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 </Reference>
 <Reference URI="contact.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -552,7 +559,11 @@
 </Reference>
 <Reference URI="css%2Fstyle1.css">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<<<<<<< HEAD
 <DigestValue>5Z7HAXpSRUCmFbSPapA/ijXscXZBwd+dRcUnQ/TzUEc=</DigestValue>
+=======
+<DigestValue>meypwTbch3+BmP6PDoaB577dohk9mt4HmVbAmtQ9NpM=</DigestValue>
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 </Reference>
 <Reference URI="faq.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -610,6 +621,10 @@
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z/WQ=</DigestValue>
 </Reference>
+<Reference URI="js%2FgetRestaurantsname.js">
+<DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
+<DigestValue>nN3ZLcbl7d2WjPKT6ssOQa1ttrkV9EeMJTMSZ5P9uU4=</DigestValue>
+</Reference>
 <Reference URI="js%2Findex.js">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
 <DigestValue>G0c14h3kvXUe3P2RrRt+YMYvWspncgtj0Pt4MHkdB4k=</DigestValue>
@@ -644,7 +659,7 @@
 </Reference>
 <Reference URI="search.html">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>huE9u5IXhZW8sg1KABjHHzedZ99+jdpGOp6fWh9wxFI=</DigestValue>
+<DigestValue>cSr+KjN44MId78pH5e0EVpfEcTmOTT77qS7oQwX2a6M=</DigestValue>
 </Reference>
 <Reference URI="#prop">
 <Transforms>
@@ -655,11 +670,19 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
+<<<<<<< HEAD
 AwPXmN96rwnoE6YA3kjJfoE7SlH+fID+0G7JDnobsdDcTS0eX/7h+wYE34Dpv743VNHIc4FspTIg
 Q7ZeCeu6FoazdeYHKgUbQgXKBD8NZX8jmmI4yx5lprHO60cxLVfbBaLty/KSDVZsAAaXF8LtWuuH
 hzEoT4x6u0osykNWxRDPgQwFsZvQy/9Q97vp9AfroAPbvgvIB43g2Nx99e3PArA0K1OUtLNQvr3m
 adOg94QJko5g3rS8ji5LAe+eWmB5RJqv0SIZqUnStBkR0mITqRl8DzzrJDvqnGoELJ4NII8n6vXV
 pz5cQBfClMi1L7uqWxXx9Uqz71les0XTJ157vw==
+=======
+HFcoxB72zyyP7kLAQcMT+0g/FK4w9MjFpYWXrG/uHXJYLMDfzFLGBhi7yTO8bNnuWDdLTr2yAMy/
+kj3Kl/l101RJTNMFIZzw/8JOBt6UjiqoOL7mbd4BRjvuikRIAesCK/TRIvD57UrfjwIwh1igfc5M
+RGiqtgd9O+qqNs4S8koYuh09aUC5cLCGaDdLyPy6MP4o2Qj/zYkGRlaP665XRKDCfUOyGQt1M6SL
+umRwbkmhvDrwapxi8iL2a9wKHT/FKgNg8eUZBVmeNJjPE/mR+dzPszL5jRiZdYrgT8b9KlPnlJPm
+PUR9en8xFdELphaX7KBy+flGriookDQGHHjM5g==
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 </SignatureValue>
 <KeyInfo>
 <X509Data>

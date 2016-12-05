@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .git/COMMIT_EDITMSG__DEL__yvQ6YJDGOm+dwJZd/879BrBJUySpMQRvlzRM0YCKeCs=
 .git/FETCH_HEAD__DEL__eiHPZfLZTnDRgrAFj5zrg92ipyXKv3bwQaTewCZOiH4=
 .git/HEAD__DEL__9vK5RfbEEbAro9qces6I3PcbavZbouDYmqgpAAQrWhA=
@@ -130,12 +131,21 @@
 about.html__DEL__57gHo83I3dS4WyHiLwZu1X2m9214zNUvYipRu4Wn42c=
 account.html__DEL__/zS81eOUa12MfTMl0x6Agl4wAuzcCRGuWoyUtXXLya4=
 config.xml__DEL__tIRTCmK1G7+wYj6RqKNloowPpMF2rwWylPdRyfE8Fi4=
+=======
+about.html__DEL__57gHo83I3dS4WyHiLwZu1X2m9214zNUvYipRu4Wn42c=
+account.html__DEL__/zS81eOUa12MfTMl0x6Agl4wAuzcCRGuWoyUtXXLya4=
+config.xml__DEL__6bvsI7jsnn05zjC7ZYXtnyeL/ygY1uTY62sIONkZTm0=
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 contact.html__DEL__P1WNt4xBKgz8LXbF5k6cADPNI3s7ftFJ3FVBIOengH8=
 css/bootstrap.css__DEL__opI27tVP8lfzTdiKv9Wi8UuRkNhIAvZwMVLWtOpRHKk=
 css/bootstrap.min.css__DEL__Wj2MBXhUhdNu5clNRoHlsdnkuUxb6LW9ew8xaP/xvZo=
 css/simple-sidebar.css__DEL__HfP5tBqtw1Ifo35BN2EUZ3Vnq1+Ua5Pp1HLzhxutLFE=
 css/style.css__DEL__hUrcB3N/yzlE8SUz6RFaiJ0iKBJFnQXIgCtWIysHoPs=
+<<<<<<< HEAD
 css/style1.css__DEL__5Z7HAXpSRUCmFbSPapA/ijXscXZBwd+dRcUnQ/TzUEc=
+=======
+css/style1.css__DEL__meypwTbch3+BmP6PDoaB577dohk9mt4HmVbAmtQ9NpM=
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 faq.html__DEL__z+aBGzVJ8RoAN1DqdHcHBFeh1ufpW196+We6SM1SZH0=
 fonts/glyphicons-halflings-regular.eot__DEL__E2NNqH2eI/jD7ZEIzhck0YOjmtBy5z4bPYy/ZG0tBAc=
 fonts/glyphicons-halflings-regular.svg__DEL__2YXNoDTqtMnyQDl2+NFx+/bvxLWTEH2LFAHlttqkYpU=
@@ -150,7 +160,12 @@ images/profile.png__DEL__LtmqwlO2cUMTX5/vpuCCx2Xc39YuRzv4PxKmwLnvW+s=
 index.html__DEL__fgb8HKfv9YwYnH5VHRWhUz9blmT62lpN2WDzHOHAahQ=
 js/bootstrap.js__DEL__1fo3W6qowq4PinpCsKshaVqewExoFmzrRBGKbSdAVEk=
 js/bootstrap.min.js__DEL__NkYOSU5MYoRDr97UCydDte3ppKdvtPe57yNFzH5Z/WQ=
+<<<<<<< HEAD
 js/index.js__DEL__G0c14h3kvXUe3P2RrRt+YMYvWspncgtj0Pt4MHkdB4k=
+=======
+js/getRestaurantsname.js__DEL__nN3ZLcbl7d2WjPKT6ssOQa1ttrkV9EeMJTMSZ5P9uU4=
+js/index.js__DEL__UKE7nJitGY10+6VKL4+bPRkcDRQ0jaD55Mmu/zkGfc8=
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88
 js/jquery.js__DEL__h5gegGKBTKJ5ki7lUnatFLvcKWSfmONLLYPDr7UFKlE=
 js/main.js__DEL__sX2ToD7iOF6+O9ZzYmv4oWJiTYCGofof+i/Vu/rcTv8=
 js/map.js__DEL__fUYEaBfMg1TBr/wr0Z+HsPutchh4LxNbTvwNI8vydmE=
@@ -158,5 +173,10 @@ js/test.js__DEL__qmLzUmBN5efP/U31t8cdzpvn1bTlVYgYq/EM4CfjZ6w=
 orders.html__DEL__vd9SMNh55P2gfIvkTkO0nJeXJxXlFmgVPRtxb/57Y3M=
 register.html__DEL__aSfJqvzqfm7Dx/W6ibW3yXRHgvCMG4K9w/dcMtC0FrY=
 restaurant2.html__DEL__m2c/z03nrA4oxVQbkg3cxtB65FkQIEYNovlxeAGNC08=
+<<<<<<< HEAD
 search.html__DEL__huE9u5IXhZW8sg1KABjHHzedZ99+jdpGOp6fWh9wxFI=
 author-signature.xml__DEL__bhlH0vzqno3WHNTPiH0qU/4hJdHntzmwfkakNbRzxBQ=
+=======
+search.html__DEL__cSr+KjN44MId78pH5e0EVpfEcTmOTT77qS7oQwX2a6M=
+author-signature.xml__DEL__daEFJbIBvpunL7QiY88VGU+CdrBVfKN/6F4OhpUjGzU=
+>>>>>>> 1b400dab3e0ab2592955d214e21dd431e43d2c88

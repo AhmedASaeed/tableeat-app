@@ -1,11 +1,25 @@
-(function() {
+(function () {
+    var url = document.location.href,
+        params = url.split('?')[1].split('&'),
+        data = {}, tmp;
+    for (var i = 0, l = params.length; i < l; i++) {
+         tmp = params[i].split('=');
+         data[tmp[0]] = tmp[1];
+    }
+    document.getElementById('title_header').innerHTML = decodeURI(data.rest0);
+ }());
 
-  
-  var rest0 = document.getElementById('rest0');
-  var rest1 = document.getElementById('rest1');
-  var rest2 = document.getElementById('rest2');
-  var rest3 = document.getElementById('rest3');
-  var restaurantsnames=[];
+
+
+
+(function() {
+  var resname = document.getElementById('title_header').innerHTML;
+  console.log(resname);
+  var main=[];
+  var starter=[];
+  var desert=[];
+  var drink=[];
+  var urll = 'http://52.79.42.151:3000/api/restaurants/'+resname;
   var notSupported = function() {
    element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
    element.className = 'fail';
@@ -32,7 +46,7 @@
   };
 
   // load a non-JSON resource
-  getJSON('http://52.79.42.151:3000/api/restaurants', function(data) {
+  getJSON(urll, function(data) {
    if (typeof data == 'string') {
     notSupported();
    } else {
@@ -48,19 +62,34 @@
 									}
 								}
 							} 
-								recursiveGetProperty(data, "name", function(obj) {
+								recursiveGetProperty(data, "main", function(obj) {
 									// do something with it.
-									restaurantsnames[restaurantsnames.length] = obj;
+									main[main.length] = obj;
+									
+								});
+								recursiveGetProperty(data, "starters", function(obj) {
+									// do something with it.
+									starter[starter.length] = obj;
+									
+								});
+								recursiveGetProperty(data, "dessert", function(obj) {
+									// do something with it.
+									desert[desert.length] = obj;
+									
+								});
+								recursiveGetProperty(data, "drink", function(obj) {
+									// do something with it.
+									drink[drink.length] = obj;
 									
 								});
 																
-								for (i = 0; i < restaurantsnames.length; i++) {
-									
-									console.log(restaurantsnames[i]);
-									
-								}
-								rest0.innerHTML=restaurantsnames[0];
-								rest1.innerHTML=restaurantsnames[1];
+
+								document.getElementById('starters').innerHTML=starter[0];
+								document.getElementById('main').innerHTML=main[0];
+								document.getElementById('dessert').innerHTML=desert[0];
+								document.getElementById('drink').innerHTML=drink[0];
+								console.log(urll);
+								
 								/////
 								
 																/*function traverse_it(obj){
@@ -78,22 +107,7 @@
 															traverse_it(data);*/
 	
 	
-   }
+   	}
+  
   });
-  var link0= document.getElementById('rest0');
-  link0.addEventListener('click',function(){
-	    var b = document.getElementById('rest0').innerHTML,
-        url = 'restaurant2.html?rest0=' + encodeURIComponent(b);
-
-        document.location.href = url;
-	  
-	  
-	  
-	 /* console.log(link0.innerHTML);
-	  rest = open("restaurant2.html",link0);
-	  rest.document.getElementById('title_header').innerHTML=rest0;*/
-	  
-	  
-  });
-
  }());

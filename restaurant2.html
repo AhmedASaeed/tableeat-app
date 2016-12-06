@@ -28,7 +28,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
+  
 </head>
 
 <body>
@@ -52,7 +52,7 @@
 		
 		<div class="ui-header" id="header_page">
 			<img src="images/menu.png" href="#menu-toggle" id="menu-toggle">
-			<h1 id="title_header">Restaurant Name</h1>
+			<h1 id="title_header"></h1>
 		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
@@ -69,15 +69,35 @@
 				        </h4>
 				      </div>
 				      <div id="collapse1" class="panel-collapse collapse in">
-				        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-				        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+				        <div class="panel-body">
+								  <ul class="results" id = "results">
+				    				<li class="restaurant">
+				    				
+				      					
+				      					<h3 class="name" id ="rest0">Starters</h3>
+				      					<p id="starters"></p>
+				    				
+				    				</li>
+				      				<hr>
+				    				<li class="restaurant">
+				      					
+				      					<h3 class="name"  id ="rest1">Main</h3>
+				      					<p id="main"></p>
+				    				</li class="restaurant">
+									<hr>
+				    				<li class="restaurant">
+				      					
+				      					<h3 class="name" id ="rest2">Dessert</h3>
+				      					<p id="dessert"></p>
+				    				</li>
+									<hr>
+				    				<li class="restaurant">
+				      					
+				      					<h3 class="name" id ="rest3">Drink</h3>
+				      					<p id="drink"></p>
+				    				</li>
+				  				</ul>
+						</div>
 				      </div>
 				    </div>
 				    <div class="panel panel-default">
@@ -123,6 +143,7 @@
 	<!-- Menu Toggle Script -->
     <script type="text/javascript" src="./js/map.js"></script>
     <!--<script type="text/javascript" src="./js/restaurant.js"></script>-->
+    <script type="text/javascript" src="./js/getmenu.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initAutocomplete" async defer></script>
 
 </body>

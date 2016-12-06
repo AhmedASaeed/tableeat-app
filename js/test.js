@@ -53,7 +53,9 @@ $(document).ready(function() {
 				data : $this.serialize(),
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
-				success : function() {
+				success : function(data) {
+					var returnedData =  $.parseJSON(data);
+					alert(returnedData);
 					window.location.href = "http://google.com";
 				}
 			});

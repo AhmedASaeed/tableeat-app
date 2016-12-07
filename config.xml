@@ -6,7 +6,7 @@
     <access origin="*" subdomains="true"></access>
     <access origin="http://52.79.42.151" subdomains="true"></access>
     <tizen:application id="04iArsKOdl.TAUSinglePage3" package="04iArsKOdl" required_version="2.4"/>
-    <content src="account.html"/>
+    <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.all"/>
     <feature name="http://tizen.org/feature/location.batch"/>
     <feature name="http://tizen.org/feature/location.gps"/>

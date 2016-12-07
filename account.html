@@ -16,7 +16,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/w3.css" rel="stylesheet">
 <style>
-.city {display:none;}
+.city {
+	display: none;
+}
 </style>
 
 <!-- Custom CSS -->
@@ -39,10 +41,10 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-				<li class="sidebar-brand"><a href="account.html">emailuser@gmail.com</a></li>
-				<img src="images/profile.png" href="account.html" id="profile" height="50" width="50">
+				<li class="sidebar-brand"><a id="email" href="account.html">emailuser@gmail.com</a></li>
+				<img src="images/profile.png" href="account.html" id="profile"
+					height="50" width="50">
 				<li><a href="search.html">Search for a restaurant</a></li>
-				<li><a href="orders.html">My orders</a></li>
 				<li><a href="account.html">My account</a></li>
 				<li><a href="about.html">About us</a></li>
 				<li><a href="faq.html">FAQ</a></li>
@@ -55,42 +57,37 @@
 			<img src="images/menu.png" href="#menu-toggle" id="menu-toggle">
 
 			<img src="images/profile.png">
-			<h1 id="title_header">Firstname Lastname</h1>
-			<h2 id="title_header">Email</h2>
-  			<div class="w3-row">
-   		 		<a href="javascript:void(0)" onclick="openCity(event, 'London');">
-      				<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">London</div>
-    					</a>
-    					<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
-      				<div class="w3-third tablink  w3-bottombar w3-hover-light-grey w3-padding">Paris</div>
-    					</a>
-    					<a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
-      				<div class="w3-third tablink  w3-bottombar w3-hover-light-grey w3-padding">Tokyo</div>
-    					</a>
-  					</div>
+			<h1 id="name_header">Firstname Lastname</h1>
+			<h2 id="email_header">Email</h2>
+			<div class="w3">
+				<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">My
+						orders</div>
+				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Favorite
+						restaurants</div>
+				</a>
 			</div>
+		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
-		
-<div class="w3-container">
 
-  <div id="London" class="w3-container city">
-    <h2>London</h2>
-    <p>London is the capital city of England.</p>
-  </div>
+			<div class="w3-container">
 
-  <div id="Paris" class="w3-container city">
-    <h2>Paris</h2>
-    <p>Paris is the capital of France.</p> 
-  </div>
+				<div id="Paris" class="w3-container city">
+					<h2>My orders</h2>
+					<p>List of my orders.</p>
+				</div>
 
-  <div id="Tokyo" class="w3-container city">
-    <h2>Tokyo</h2>
-    <p>Tokyo is the capital of Japan.</p>
-  </div>
-</div>
+				<div id="Tokyo" class="w3-container city">
+					<h2>Favorite restaurants</h2>
+					<p>List of my favorite restaurants.</p>
+				</div>
+			</div>
 
-<script>
+			<script>
 function openCity(evt, cityName) {
   var i, x, tablinks;
   x = document.getElementsByClassName("city");
@@ -115,14 +112,6 @@ function openCity(evt, cityName) {
 	<script src="js/main.js"></script>
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
-
-	<!-- Menu Toggle Script -->
-	<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-    </script>
 
 </body>
 

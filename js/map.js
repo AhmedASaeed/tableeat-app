@@ -64,7 +64,3 @@ function initAutocomplete() {
   });
   // [END region_getplaces]
 }
-      $("#menu-toggle").click(function(e) {
-          e.preventDefault();
-          $("#wrapper").toggleClass("toggled");
-      });

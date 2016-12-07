@@ -24,8 +24,13 @@ $(document).ready(function() {
 				type : $this.attr('method'), // The method specified in the form (get or post)
 				data : $this.serialize(),
 				dataType : 'json', // JSON// I serialize the data (I send all the values ​​present in the form)
-				success : function() {
-					window.location.href = "http://google.com";
+				success : function(data) {
+					localStorage.setItem("username", data.username);
+					localStorage.setItem("name", data.firstname + " " + data.lastname);
+					window.location.href = "search.html";
+				},
+				error: function(){
+					alert('error');
 				}
 			});
 		}
@@ -54,9 +59,13 @@ $(document).ready(function() {
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
 				success : function(data) {
-					var returnedData =  $.parseJSON(data);
-					alert(returnedData);
-					window.location.href = "http://google.com";
+					localStorage.setItem("username", data.username);
+					window.location.href = "search.html";
+				},
+				error: function(xhr,err){
+					if(xhr.status == 404) alert("You didn't register");
+				    //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
+				    //alert("responseText: "+xhr.responseText);
 				}
 			});
 		}

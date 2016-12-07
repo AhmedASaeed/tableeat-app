@@ -20,15 +20,39 @@
 <link rel="stylesheet" href="./css/style1.css">
 <!--<link rel="stylesheet" href="./css/restaurantpagecss.css">-->
 
- 
-
+ <link rel="stylesheet" href="./css/calendarview.css">
+    <style>
+      div.calendar {
+        max-width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      div.calendar table {
+        width: 100%;
+      }
+      div.dateField {
+        width: 140px;
+        padding: 6px;
+        -webkit-border-radius: 6px;
+        -moz-border-radius: 6px;
+        color: #555;
+        background-color: white;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      div#popupDateField:hover {
+        background-color: #cde;
+        cursor: pointer;
+      }
+    </style>
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  
+    
 </head>
 
 <body>
@@ -38,7 +62,7 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a href="#menu-toggle">emailuser@gmail.com</a></li>
+					<li class="sidebar-brand"><a id="email" href="account.html">emailuser@gmail.com</a></li>
 					<img src="images/profile.png" id="profile" height="50" width="50">
 				<li><a href="search.html">Search for a restaurant</a></li>
 				<li><a href="#">My orders</a></li>
@@ -56,11 +80,11 @@
 		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
-			<div class="container-fluid">
+			
 			
 			<div id="map"></div>
-			<div>
-				  <p><strong>Note:</strong> The <strong>data-parent</strong> attribute makes sure that all collapsible elements under the specified parent will be closed when one of the collapsible item is shown.</p>
+			<div class="container-fluid" id="list">
+			<div >
 				  <div class="panel-group" id="accordion">
 				    <div class="panel panel-default">
 				      <div class="panel-heading">
@@ -73,6 +97,7 @@
 								  <ul class="results" id = "results">
 				    				<li class="restaurant">
 				    				
+				      					
 				      					<h3 class="name" id ="rest0">Starters</h3>
 				      					<p id="starters"></p>
 				    				
@@ -105,11 +130,50 @@
 				          <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Reservation</a>
 				        </h4>
 				      </div>
-				      <div id="collapse2" class="panel-collapse collapse">
-				        <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-				        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
-				      </div>
+								      <div id="collapse2" class="panel-collapse collapse">
+								        <div class="panel-body">
+								        
+								        <div class="top-rowR">
+
+
+												<div class="field-wrap1">
+													<select name="Select_1" tabindex="1" aria-label="persons"> 
+													   <option value="1">1 person</option> 
+													   <option value="2">2 people</option> 
+													   <option value="3">3 people</option>  
+													   <option value="4">4 people</option>  
+													   <option value="5">5 people</option>  
+													   <option value="6">6 people</option>  
+													   <option value="7">7 people</option>  
+													   <option value="8">8 people</option>  
+													   <option value="9">9 people</option>  
+													   </select>
+												</div>
+    											
+ 
+      
+        <div id="popupExample">
+          <div id="popupDateField" style="background-color: #efefef;" class="dateField" style="margin: 10px">
+            Show Calendar
+          </div>
+        </div>
+     
+												<div class="field-wrap1">
+													   <select name="Select_0" tabindex="3" aria-label="hour"> 
+													   <option value="20:30">8:30 PM</option>  
+													   <option value="21:00">9:00 PM</option>    
+													   <option value="21:30">9:30 PM</option> 
+													   <option value="22:00">10:00 PM</option>    
+													   <option value="22:30">10:30 PM</option>
+													   <option value="23:00">11:00 PM</option>    
+													   <option value="23:30">11:30 PM</option> 
+													   </select>
+												</div>
+												
+										</div>
+								        
+								        </div>
+								      </div>
 				    </div>
 				    <div class="panel panel-default">
 				      <div class="panel-heading">
@@ -138,13 +202,16 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src="./js/bootstrap.min.js"></script>
-
+	
+	
+<script src="./js/prototype.js"></script>
+	<script src="./js/calendarview.js"></script>
 	<!-- Menu Toggle Script -->
     <script type="text/javascript" src="./js/map.js"></script>
     <!--<script type="text/javascript" src="./js/restaurant.js"></script>-->
     <script type="text/javascript" src="./js/getmenu.js"></script>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCj3UkY_E1gt_Txwi3CYCZ-mTtz2-1C42g&libraries=places&callback=initAutocomplete" async defer></script>
-
+    
 </body>
 
 </html>

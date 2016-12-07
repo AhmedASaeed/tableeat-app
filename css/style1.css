@@ -471,3 +471,16 @@ text-align : center;
   width: 100%;
 	overflow:hidden;
 }
+
+.field-wrap1 {
+  position: relative;
+  margin-bottom: 40px;
+  width: 30%;
+}
+.top-rowR{
+  width: 100%;
+  margin-right: -15px;
+  margin-left: -15px;
+  position: relative;
+}
+

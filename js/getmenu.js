@@ -129,8 +129,87 @@ function openCity(evt, cityName, map) {
 	  $('.menu-description').remove();
 	  getMenu();
   }
+  if(cityName == "Tokyo"){
+	  $('.reviewtabapend').remove();
+	  getReviews();
+  }
 }
+/////////////////////Start Review Tab/////////////////
+function getReviews(){
+	var resname = document.getElementById('title_header').innerHTML;
+	var reviewer = [];
+	var reviewstars = [];
+	var reviewtext = [];
+	var urll = 'http://localhost:3000/api/restaurants/' + resname+'/reviews';
+	var notSupported = function() {
+		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
+		element.className = 'fail';
+		};
+		var getJSON = function(url, successHandler, errorHandler) {
+			if (typeof XMLHttpRequest == 'undefined') {
+				return notSupported();
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status == 200) {
+					successHandler && successHandler(xhr.response);
+				} else {
+					errorHandler && errorHandler(status);
+				}
+			};
+			xhr.send();
+		};
+		// load a non-JSON resource
+		getJSON(urll, function(data) {
+			if (typeof data == 'string') {
+				notSupported();
+			} else {
 
+				// alert('Your public IP address is: ' + data);
+				// /function that works
+				function recursiveGetProperty(obj, lookup, callback)
+				{
+					for (property in obj)
+					{
+						if (property == lookup) 
+						{
+							callback(obj[property]);
+						} else if (obj[property] instanceof Object) {
+							recursiveGetProperty(obj[property], lookup, callback);
+						}
+					}
+				}
+				/////Start lookup////// 
+				recursiveGetProperty(data, "name", function(obj) {
+					reviewer[reviewer.length] = obj;
+
+				});
+				recursiveGetProperty(data, "reviewtext", function(obj) {
+					reviewtext[reviewtext.length] = obj;
+
+				});
+				recursiveGetProperty(data, "reviewstars", function(obj) {
+					reviewstars[reviewstars.length] = obj;
+
+				});
+				
+				updateReview();
+			
+			}
+		});
+		function updateReview(){
+			for (i = 0; i < reviewer.length; i++){
+				$('#reviewtab').append('<div class="reviewtabapend"><h2>'+ reviewer[i]+'</h2><h3>'+reviewstars[i]+'</h3><h5>'+reviewtext[i]+'</h5><hr>');
+			}
+			
+		}
+		
+	
+}
+/////////////////////End Review Tab/////////////////
 function getMenu() {
 	var resname = document.getElementById('title_header').innerHTML;
 	console.log(resname);
@@ -429,26 +508,68 @@ function getMenu() {
 			console.log("selected_drinks loo : "+i+" : " + selected_drinks[i]);
 		}
 		
-		console.log(JSON.stringify({ 
-				"bookUser": {"name" : name, "email" : email},
-				"bookmenu" : {
-			        "starters" : $.each([starter ,quantities_starters], function(index,i) { [{"starteritem" : starter[index], "quantity" : quantities_starters[index] }]}),
-			        "main" : $.each([main ,quantities_mains],function(index,i) {[{"mainitem" : main[index], "quantity" : quantities_mains[index]}]}),
-			        "dessert" :$.each([dessert ,quantities_desserts], function(index,i) { [{"dessertitem" : dessert[index], "quantity" : quantities_desserts[index]}]}),
-			        "drink" :$.each([drink ,quantities_drinks], function(index,i) {[{"drinkitem" : drink[index], "quantity" : quantities_drinks[index]}]})
-			    }}));
 		
-	
-		
-		
+		 /*
 		console.log(JSON.stringify({ 
 			"bookUser": {"name" : name, "email" : email},
 			"bookmenu" : {
-		        "starters" :[{"starteritem" : starter[0], "quantity" : quantities_starters[1]}],
-		        "main" :[{"mainitem" : main[0], "quantity" : quantities_mains[1]}],
-		        "dessert" :[{"dessertitem" : dessert[0], "quantity" : quantities_desserts[1]}],
-		        "drink" :[{"drinkitem" : drink[0], "quantity" : quantities_drinks[1]}]
+		        "starters" :  [{"starteritem" : $.each(starter , function(index) {starter[index]}), "quantity" :  $.each(quantities_starters , function(index) {quantities_starters[index]}) }],
+		        "main" : [{"mainitem" : $.each(main,function(index) {main[index]}), "quantity" : $.each(quantities_mains,function(index) {quantities_mains[index]})}],
+		        "dessert" : [{"dessertitem" :$.each(dessert, function(index) { dessert[index]}), "quantity" : $.each(quantities_desserts, function(index) {quantities_desserts[index]})}],
+		        "drink" :[{"drinkitem" : $.each(drink, function(index) {drink[index]}), "quantity" :  $.each(quantities_drinks, function(index) {quantities_drinks[index]})}]
 		    }}));
+		*/
+
+		
+		var reqStarter = '{"starters" :[{"starteritem" : "'+starter[0]+'", "quantity" : "'+quantities_starters[0]+'"}';
+		for(i=1; i < starter.length; i++){
+			if(i == starter.length-1)
+				reqStarter = reqStarter + ',{"starteritem" : "'+starter[i]+'", "quantity" : "'+quantities_starters[i]+'"}]';
+			else
+				reqStarter = reqStarter + ',{"starteritem" : "'+starter[i]+'", "quantity" : "'+quantities_starters[i]+'"}';
+		}
+		var reqmain = '"main" :[{"mainitem" : "'+main[0]+'", "quantity" : "'+quantities_mains[0]+'"}';
+		for(i=1; i < main.length; i++){
+			if(i == main.length-1)
+				reqmain = reqmain + ',{"mainitem" : "'+main[i]+'", "quantity" : "'+quantities_mains[i]+'"}]';
+			else
+				reqmain = reqmain + ',{"mainitem" : "'+main[i]+'", "quantity" : "'+quantities_mains[i]+'"}';
+		}
+		var reqdessert = '"dessert" :[{"dessertitem" : "'+dessert[0]+'", "quantity" : "'+quantities_desserts[0]+'"}';
+		for(i=1; i < dessert.length; i++){
+			if(i == dessert.length-1)
+				reqdessert = reqdessert + ',{"mainitem" : "'+dessert[i]+'", "quantity" : "'+quantities_desserts[i]+'"}]';
+			else
+				reqdessert = reqdessert + ',{"mainitem" : "'+dessert[i]+'", "quantity" : "'+quantities_desserts[i]+'"}';
+		}
+		var reqdrink = '"drink" :[{"drinkitem" : "'+drink[0]+'", "quantity" : "'+quantities_drinks[0]+'"}';
+		for(i=1; i < drink.length; i++){
+			if(i == drink.length-1)
+				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}]';
+			else
+				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}';
+		}
+		var reguser = '{"bookUser": {"name" : "'+name+'", "email" : "'+email+'"},"bookmenu" :';
+		var timedate = $('.input-group date#datetimepicker5').datetimepicker('getDate');
+		var list = document.getElementById('number-people');var INDEX = list.selectedIndex;
+
+		var numofpeople = list[INDEX].value;
+		var regtimeandnump = '"bookingtime" : "'+timedate+'","numberOfpeople" :"'+numofpeople+'"}';
+		console.log(reqStarter);
+		console.log(reqmain);
+		console.log(reqdessert);
+		console.log(reqdrink);
+		console.log(regtimeandnump);
+		console.log(reguser+reqStarter+reqmain+reqdessert+reqdrink+regtimeandnump);
+		/*console.log({ 
+			"bookUser": {"name" : name, "email" : email},
+			"bookmenu" : 
+		        reqStarter+
+		        reqmain+
+		        reqdessert+
+		        reqdrink
+		    });
+		    */
 
 		// I check the first time to not run the HTTP request
 		// if I know my PHP will return an error
@@ -464,7 +585,7 @@ function getMenu() {
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
 				success : function(data) {
-					//window.location.href = "account.html";
+					window.location.href = "account.html";
 				},
 				error: function(xhr,err){
 					if(xhr.status == 404) alert("You didn't register");

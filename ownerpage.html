@@ -5,9 +5,12 @@
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,user-scalable=1" />
+<meta name="viewport" content="width=device-width,user-scalable=no" />
 <meta name="description" content="">
 <meta name="author" content="">
+
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 <title>TableEat - Tizen application to book a table at a
 	restaurant</title>
@@ -36,6 +39,14 @@
 
 <body>
 
+<script>
+function addInput(){
+          var newInput = document.createElement('input');
+          newInput.innerHTML = "<label for='starter3' class='ui-hidden-accessible'>Starter3</label><input type='text' name='starter2' id='starter3' placeholder='Starter3'>";
+          document.getElementById('input-starters').append(newInput);
+}
+</script>
+
 	<div id="wrapper">
 
 		<!-- Sidebar -->
@@ -59,7 +70,7 @@
 			<img src="images/profile.png">
 			<h1 id="name_header">Firstname Lastname</h1>
 			<h2 id="email_header">Email</h2>
-			<div class="w3">
+<!-- 			<div class="w3">
 				<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
 					<div
 						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">My
@@ -69,75 +80,145 @@
 						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Update
 						Restaurant Information</div>
 				</a>
-			</div>
+			</div> -->
 		</div>
 		<!-- Page Content -->
-		<div class="container-fluid" id="list">
-		<div id="page-content-wrapper">
+		<div class="container-fluid" id="orders-list">
 
+		<div id="page-content-wrapper">
+			
 			<div class="w3-container">
+			
+			<div class="w3-row">
+				<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">My
+						orders</div>
+				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">My restaurants</div>
+				</a>
+			</div>
+			<div id="line"></div>
 
 				<div id="Paris" class="w3-container city">
-								<h2>My orders</h2>
-								
-			  				<ul class="results" id = "results">
-			  				
-			    				<li class="restaurant">
-			    				
+			  		<ul class="results" id = "results">
+			    		<li class="restaurant">
+			    			<div class="order-item-line">
+			    				<div class="customer-information">
 			      					<img src="images/profile.png" >
-			      					<h3 class="name" id ="rest0">The Grasslands</h3>
-			      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-			      					<button type="submit" id="login-button" class="button button-block">DONE</button>
+			      					<p id="first-name">First Last</p>
+			      					<p>Rating : </p>
+			      				</div>
+			      				<div class="order-information">
+			      					<h3 class="name" id ="order0">Today 9 PM</h3>
+			    					<p>Number of people : </p>
+			    					<dl>
+  										<dt>Starter : </dt>
+  										<dt>Main : </dt>
+  										<dt>Dessert : </dt>
+  										<dt>Drink : </dt>
+									</dl>
+			    				</div>
+<!-- 			    				<div class="order-buttons">
+			    					<button type="submit" id="decline-button" class="button button-block">Decline</button>
+			    					<button type="submit" id="accept-button" class="button button-block">Accept</button>
+			    				</div> -->
+			      			</div>
+			    		</li>
+			    				<hr>
+			    		<li class="restaurant">
+			    			<div class="order-item-line">
+			    				<div class="customer-information">
+			      					<img src="images/profile.png" >
+			      					<p>First Last</p>
+			      					<p>Rating : </p>
+			      				</div>
+			      				<div class="order-information">
+			      					<h3 class="name" id ="order0">Today 9 PM</h3>
+			    					<p>Number of people : </p>
+			    					<dl>
+  										<dt>Starter : </dt>
+  										<dt>Main : </dt>
+  										<dt>Dessert : </dt>
+  										<dt>Drink : </dt>
+									</dl>
+			    				</div>
+<!-- 			    				<div class="order-buttons">
+			    					<button type="submit" id="decline-button" class="button button-block">Decline</button>
+			    					<button type="submit" id="accept-button" class="button button-block">Accept</button>
+			    				</div> -->
+			      			</div>
 			    				</li>				
 			  				</ul>
-						
 				</div>
 
 				<div id="Tokyo" class="w3-container city">
-							
-				  				
-									  	<div id="login1">		
-											<form id="login-form" action="http://localhost:3000/api/login"
-											method="post">
-					
-											<div class="field-wrap">
-												<label> Restaurant Name</label>
-												<input type="email" id="usernamel" name="username" required autocomplete="off" />
-											</div>
-					
-											<div class="field-wrap">
-												<label> Type</label>
-												<input type="password" id="passwordl" name="password" required autocomplete="off" />
-											</div>
-										
-											<button type="submit" id="login-button"
-												class="button button-block">Update</button>
-					
-										</form> 
-									</div>    				
-									
-									
-							  
-							
+				  	<div id="create-restaurant">
+				  		<h1 id="register-restaurant">Register your restaurant</h1>		
+							<form id="register-restaurant-form" action="http://localhost:3000/api/restaurants" method="post">
+								<div class="field-wrap-restaurant">
+									<div id="typefood">
+										<select name="Select_type" id="type-food" aria-label="types">
+											<option selected disabled>Type of food</option>
+											<option value="korean">Korean</option>
+											<option value="indian">Indian</option>
+											<option value="chinese">Chinese</option>
+											<option value="japanese">Japanese</option>
+											<option value="middle-eastern">Middle-Eastern</option>
+											<option value="italian">Italian</option>
+											<option value="american">American</option>
+										</select>
+									</div>
+								</div>
+								<div class="field-wrap-restaurant">
+									<input placeholder="Restaurant name" type="text" id="rest-name" name="rest-name" required autocomplete="off" />
+								</div>
+								<div class="field-wrap-restaurant">
+									<input placeholder="Address" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+								</div>
+								<div class="field-wrap-restaurant">
+									<input type="file" id="rest-image" name="rest-image" required autocomplete="off" />
+								</div>
+								  <div data-role="main" class="ui-content">
+    							<button id="myBtn">Add the menu</button>
+
+							<!-- The Modal -->
+							<div id="myModal" class="modal">
+
+  							<!-- Modal content -->
+  							<div class="modal-content">
+    							<span class="close">&times;</span>
+    								<div class="field-wrap-restaurant">
+    									<h2>Starters :</h2>
+										<input placeholder="Starter 1" type="text" id="rest-name" name="rest-name" required autocomplete="off" />
+										<br>
+										<input placeholder="Starter 2" type="text" id="rest-name" name="rest-name" required autocomplete="off" />
+									</div>
+									<div class="field-wrap-restaurant">
+										<h2>Main dishes :</h2>
+										<input placeholder="Main dish 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+									</div>
+									<div class="field-wrap-restaurant">
+										<h2>Desserts :</h2>
+										<input placeholder="Dessert 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+									</div>
+									<div class="field-wrap-restaurant">
+										<h2>Drinks :</h2>
+										<input placeholder="Drink 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+									</div>
+									<button type="submit" id="save-menu-restaurant" class="button button-block">Save</button>
+  							</div>
+
+						</div>
+  							</div>
+								<button type="submit" id="register-restaurant" class="button button-block">Register restaurant</button>
+						</form> 
+					</div>    					
 				</div>
+				
 			</div>
 		</div>
-
-			<script>
-function openCity(evt, cityName) {
-  var i, x, tablinks;
-  x = document.getElementsByClassName("city");
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablink");
-  for (i = 0; i < x.length; i++) {
-     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
-  }
-  document.getElementById(cityName).style.display = "block";
-  evt.currentTarget.firstElementChild.className += " w3-border-red";
-}
-</script>
 			<!-- /#page-content-wrapper -->
 		</div>
 	</div>
@@ -146,6 +227,7 @@ function openCity(evt, cityName) {
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/ownerpage.js"></script>
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>
 

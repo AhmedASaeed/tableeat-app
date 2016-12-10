@@ -23,12 +23,12 @@ function openFirst(cityName) {
 
 openFirst("Paris");
 
-function getUserInfo(){
+function getUserBookings(){
 	var resname = document.getElementById('title_header').innerHTML;
-	var reviewer = [];
-	var reviewstars = [];
-	var reviewtext = [];
-	var urll = 'http://localhost:3000/api/users/' + localStorage.getItem("username") +'/b';
+	var nbr_bookings = 0;
+	var bookings = [];
+	var bookmenu = [];
+	var urll = 'http://localhost:3000/api/users/' + localStorage.getItem("username") +'/bookings';
 	var notSupported = function() {
 		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
 		element.className = 'fail';
@@ -71,26 +71,34 @@ function getUserInfo(){
 					}
 				}
 				/////Start lookup////// 
-				recursiveGetProperty(data, "name", function(obj) {
-					reviewer[reviewer.length] = obj;
-
-				});
-				recursiveGetProperty(data, "reviewtext", function(obj) {
-					reviewtext[reviewtext.length] = obj;
-
-				});
-				recursiveGetProperty(data, "reviewstars", function(obj) {
-					reviewstars[reviewstars.length] = obj;
-
+				recursiveGetProperty(data, "bookmenu", function(obj) {
+					bookmenu[bookmenu.length] = obj;
 				});
 				
-				updateReview();
-			
+				nbr_bookings = bookmenu.length;
+				updateListBooking();
+				for (i = 0; i < bookmenu.length; i++) {
+					bookings[i] = document.getElementById('booking' + i);
+					console.log(bookings[i]);
+				}
 			}
+			function handleElementBooking(i) {
+				document.getElementById('booking' + i).innerHTML = bookings[i];
+			}
+
+			for (i = 0; i < nbr_rest; i++)
+				handleElementBooking(i);
 		});
-		function updateReview(){
-			for (i = 0; i < reviewer.length; i++){
-				$('#reviewtab').append('<div class="reviewtabapend"><h2>'+ reviewer[i]+'</h2><h3>'+reviewstars[i]+'</h3><h5>'+reviewtext[i]+'</h5><hr>');
+		function updateListBooking(){
+			for (i = 0; i < bookings.length; i++){
+				$('#results').append('<li class="restaurant"><img src="images/profile.png" ><h3 class="name" id ="booking0">The Grasslands</h3><h5>'+reviewtext[i]+'</h5><hr>');
+				
+				
+					
+					
+					<p>Menu</p>
+			
+			</li>
 			}
 		}	
 }

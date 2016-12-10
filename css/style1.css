@@ -681,3 +681,13 @@ text-align : center;
     text-decoration: none;
     cursor: pointer;
 }
+.selecttype{
+	width : 100%;
+	display: block;
+	background: rgba(19, 35, 47, 0.9);
+	height: 38px;
+    color: #a0b3b0;
+    font-size: 20px;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 300;
+}

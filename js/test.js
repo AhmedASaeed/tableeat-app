@@ -11,7 +11,9 @@ $(document).ready(function() {
 		var lastname = $('#lastname').val();
 		var username = $('#username').val();
 		var password = $('#password').val();
-
+		var list = document.getElementById('type');var INDEX = list.selectedIndex;
+		var type = list[INDEX].value;
+		
 		// I check the first time to not run the HTTP request
 		// if I know my PHP will return an error
 
@@ -27,7 +29,10 @@ $(document).ready(function() {
 				success : function(data) {
 					localStorage.setItem("username", data.username);
 					localStorage.setItem("name", data.firstname + " " + data.lastname);
-					window.location.href = "search.html";
+					if(type == "Customer")
+						window.location.href = "search.html";
+					else
+						window.location.href = "ownerpage.html";
 				},
 				error: function(){
 					alert('error');
@@ -60,12 +65,13 @@ $(document).ready(function() {
 				// the values ​​present in the form)
 				success : function(data) {
 					localStorage.setItem("username", data.username);
-					window.location.href = "search.html";
+					if(data.type == "Customer")
+						window.location.href = "search.html";
+					else
+						window.location.href = "ownerpage.html";
 				},
 				error: function(xhr,err){
-					if(xhr.status == 404) alert("You didn't register");
-				    //alert("readyState: "+xhr.readyState+"\nstatus: "+xhr.status);
-				    //alert("responseText: "+xhr.responseText);
+					if(xhr.status == 404) alert("You have to register first");
 				}
 			});
 		}

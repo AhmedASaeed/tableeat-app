@@ -410,9 +410,38 @@ text-align : center;
 
 #list{
   background-color: #ffffff;
-  margin: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   overflow: auto;
   height:300px;
+}
+
+#collapse1,
+#collapse2,
+#collapse3,
+#collapse4{
+	background-color:#ffffff;
+}
+
+#restaurant-details{
+  background-color: #ffffff;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  overflow: auto;
+  height:100%;
+}
+
+#accordion{
+	margin-top: 35px;
+	margin-bottom: 10px;
+}
+
+ #accordion-elm{
+	margin-bottom: 50px;
+}
+
+#datetimepicker5{
+	margin-left:10px;
 }
 
 .results{
@@ -428,13 +457,52 @@ text-align : center;
   margin-right:  10px;
 }
 
-.restaurant p {
+.menu-item-line{
+	text-align:center;
+	width:100%;
+}
+
+.menu-item img {
+  float: right;
+  margin-top:15px;
+  margin-right:15px;
+}
+
+.menu-item button {
+  float: right;
+  margin-top:15px;
+  margin-right:15px;
+}
+
+.menu-item h4 {
+  float: left;
+  font-size: 12px;
+  margin-top:20px;
+}
+
+.menu-item form label {
+	color:#ffffff;
+}
+
+.menu-item input{
+	display: inline-block;
+    margin-top:10px;
+	width: 32px;
+	color:#000000;
+}
+
+.restaurant p, 
+.menu-item p {
   font-family : 'Titillium Web', sans-serif;
 }
 
 .restaurant:hover {
   background: #eee;
   cursor: pointer;
+}
+
+.menu-item{
+  overflow: auto;
 }
 
 .restaurant{
@@ -474,7 +542,8 @@ text-align : center;
 
 .field-wrap1 {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  margin-left:10px;
   width: 30%;
 }
 .top-rowR{
@@ -484,3 +553,13 @@ text-align : center;
   position: relative;
 }
 
+#line{
+	height:2px;
+	width:100%;
+	background-color:#C0C0C0;
+}
+
+.update-menu{
+	cursor:pointer;
+    border: none; 
+}

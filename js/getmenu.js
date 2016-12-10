@@ -6,9 +6,11 @@
 	var selected_mains = [];
 	var selected_desserts = [];
 	var selected_drinks = [];
+	var resname;
 	
 	
 function getTitleHeader() {
+
 	var url = document.location.href, params = url.split('?')[1].split('&'), data = {}, tmp;
 	for (var i = 0, l = params.length; i < l; i++) {
 		tmp = params[i].split('=');
@@ -16,6 +18,7 @@ function getTitleHeader() {
 		console.log('data[tmp[i]] : ' + data[tmp[i]]);
 		console.log('tmp[i+1] : ' + tmp[i+1]);
 		document.getElementById('title_header').innerHTML = decodeURI(data[tmp[i]]);
+		resname = document.getElementById('title_header').innerHTML;
 	}
 }
 
@@ -136,7 +139,7 @@ function openCity(evt, cityName, map) {
 }
 /////////////////////Start Review Tab/////////////////
 function getReviews(){
-	var resname = document.getElementById('title_header').innerHTML;
+	resname = document.getElementById('title_header').innerHTML;
 	var reviewer = [];
 	var reviewstars = [];
 	var reviewtext = [];
@@ -211,7 +214,7 @@ function getReviews(){
 }
 /////////////////////End Review Tab/////////////////
 function getMenu() {
-	var resname = document.getElementById('title_header').innerHTML;
+	resname = document.getElementById('title_header').innerHTML;
 	console.log(resname);
 	nbr_starters = 0;
 	nbr_main = 0;
@@ -453,7 +456,7 @@ function getMenu() {
 	$('#book').on('click', function(e) {
 		e.preventDefault(); // I prevent the default behavior of the browser, ie submit the form
 
-		var $this = $(this); // jQuery object of the form
+		//var $this = $(this); // jQuery object of the form
 
 		// Customer
 		var name = localStorage.getItem("name");
@@ -524,28 +527,28 @@ function getMenu() {
 		var reqStarter = '{"starters" :[{"starteritem" : "'+starter[0]+'", "quantity" : "'+quantities_starters[0]+'"}';
 		for(i=1; i < starter.length; i++){
 			if(i == starter.length-1)
-				reqStarter = reqStarter + ',{"starteritem" : "'+starter[i]+'", "quantity" : "'+quantities_starters[i]+'"}]';
+				reqStarter = reqStarter + ',{"starteritem" : "'+starter[i]+'", "quantity" : "'+quantities_starters[i]+'"}],';
 			else
 				reqStarter = reqStarter + ',{"starteritem" : "'+starter[i]+'", "quantity" : "'+quantities_starters[i]+'"}';
 		}
 		var reqmain = '"main" :[{"mainitem" : "'+main[0]+'", "quantity" : "'+quantities_mains[0]+'"}';
 		for(i=1; i < main.length; i++){
 			if(i == main.length-1)
-				reqmain = reqmain + ',{"mainitem" : "'+main[i]+'", "quantity" : "'+quantities_mains[i]+'"}]';
+				reqmain = reqmain + ',{"mainitem" : "'+main[i]+'", "quantity" : "'+quantities_mains[i]+'"}],';
 			else
 				reqmain = reqmain + ',{"mainitem" : "'+main[i]+'", "quantity" : "'+quantities_mains[i]+'"}';
 		}
 		var reqdessert = '"dessert" :[{"dessertitem" : "'+dessert[0]+'", "quantity" : "'+quantities_desserts[0]+'"}';
 		for(i=1; i < dessert.length; i++){
 			if(i == dessert.length-1)
-				reqdessert = reqdessert + ',{"mainitem" : "'+dessert[i]+'", "quantity" : "'+quantities_desserts[i]+'"}]';
+				reqdessert = reqdessert + ',{"mainitem" : "'+dessert[i]+'", "quantity" : "'+quantities_desserts[i]+'"}],';
 			else
 				reqdessert = reqdessert + ',{"mainitem" : "'+dessert[i]+'", "quantity" : "'+quantities_desserts[i]+'"}';
 		}
 		var reqdrink = '"drink" :[{"drinkitem" : "'+drink[0]+'", "quantity" : "'+quantities_drinks[0]+'"}';
 		for(i=1; i < drink.length; i++){
 			if(i == drink.length-1)
-				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}]';
+				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}]},';
 			else
 				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}';
 		}
@@ -554,13 +557,14 @@ function getMenu() {
 		var list = document.getElementById('number-people');var INDEX = list.selectedIndex;
 
 		var numofpeople = list[INDEX].value;
-		var regtimeandnump = '"bookingtime" : "'+timedate+'","numberOfpeople" :"'+numofpeople+'"}';
+		var regtimeandnump = '"bookingtime" : "timedate","numberOfpeople" :"'+numofpeople+'"}';
 		console.log(reqStarter);
 		console.log(reqmain);
 		console.log(reqdessert);
 		console.log(reqdrink);
 		console.log(regtimeandnump);
 		console.log(reguser+reqStarter+reqmain+reqdessert+reqdrink+regtimeandnump);
+		var regsend = reguser+reqStarter+reqmain+reqdessert+reqdrink+regtimeandnump;
 		/*console.log({ 
 			"bookUser": {"name" : name, "email" : email},
 			"bookmenu" : 
@@ -579,12 +583,13 @@ function getMenu() {
 		} else {
 			// Sending the HTTP request in asynchronous mode
 			$.ajax({
-				url : $this.attr('action'), // The name of the file indicated in the form
-				type : $this.attr('method'), // The method specified in the // form (get or post)
-				data : $this.serialize(),
+				url : 'http://localhost:3000/api/restaurants/' + resname + '/bookings', // The name of the file indicated in the form
+				type : 'POST', // The method specified in the // form (get or post)
+				data : regsend,
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
 				success : function(data) {
+					alert(data.numberOfpeople);
 					window.location.href = "account.html";
 				},
 				error: function(xhr,err){

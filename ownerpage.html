@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width,user-scalable=1" />
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>TableEat - Tizen application to book a table at a
+	restaurant</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/w3.css" rel="stylesheet">
+<style>
+.city {
+	display: none;
+}
+</style>
+
+<!-- Custom CSS -->
+<link href="css/simple-sidebar.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style1.css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+	<div id="wrapper">
+
+		<!-- Sidebar -->
+		<div id="sidebar-wrapper">
+			<ul class="sidebar-nav">
+				<li class="sidebar-brand"><a id="email" href="account.html">emailuser@gmail.com</a></li>
+				<img src="images/profile.png" href="account.html" id="profile"
+					height="50" width="50">
+				<li><a href="search.html">Search for a restaurant</a></li>
+				<li><a href="account.html">My account</a></li>
+				<li><a href="about.html">About us</a></li>
+				<li><a href="faq.html">FAQ</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+		<!-- /#sidebar-wrapper -->
+
+		<div class="ui-header" id="header_page">
+			<img src="images/menu.png" href="#menu-toggle" id="menu-toggle">
+
+			<img src="images/profile.png">
+			<h1 id="name_header">Firstname Lastname</h1>
+			<h2 id="email_header">Email</h2>
+			<div class="w3">
+				<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">My
+						orders</div>
+				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
+					<div
+						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Update
+						Restaurant Information</div>
+				</a>
+			</div>
+		</div>
+		<!-- Page Content -->
+		<div class="container-fluid" id="list">
+		<div id="page-content-wrapper">
+
+			<div class="w3-container">
+
+				<div id="Paris" class="w3-container city">
+								<h2>My orders</h2>
+								
+			  				<ul class="results" id = "results">
+			  				
+			    				<li class="restaurant">
+			    				
+			      					<img src="images/profile.png" >
+			      					<h3 class="name" id ="rest0">The Grasslands</h3>
+			      					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+			      					<button type="submit" id="login-button" class="button button-block">DONE</button>
+			    				</li>				
+			  				</ul>
+						
+				</div>
+
+				<div id="Tokyo" class="w3-container city">
+							
+				  				
+									  	<div id="login1">		
+											<form id="login-form" action="http://localhost:3000/api/login"
+											method="post">
+					
+											<div class="field-wrap">
+												<label> Restaurant Name</label>
+												<input type="email" id="usernamel" name="username" required autocomplete="off" />
+											</div>
+					
+											<div class="field-wrap">
+												<label> Type</label>
+												<input type="password" id="passwordl" name="password" required autocomplete="off" />
+											</div>
+										
+											<button type="submit" id="login-button"
+												class="button button-block">Update</button>
+					
+										</form> 
+									</div>    				
+									
+									
+							  
+							
+				</div>
+			</div>
+		</div>
+
+			<script>
+function openCity(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-border-red";
+}
+</script>
+			<!-- /#page-content-wrapper -->
+		</div>
+	</div>
+	<!-- /#wrapper -->
+
+	<!-- jQuery -->
+	<script src="js/jquery.js"></script>
+	<script src="js/main.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

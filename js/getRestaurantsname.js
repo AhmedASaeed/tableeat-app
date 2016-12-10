@@ -103,7 +103,7 @@
 									'click',
 									function() {
 										var b = document.getElementById('rest'
-												+ i).innerHTML, url = 'restaurant2.html?rest'
+												+ i).innerHTML, url = 'restaurant.html?rest'
 												+ i
 												+ '='
 												+ encodeURIComponent(b);
@@ -125,7 +125,9 @@
 		  //$('#list .results li').remove();
 		//for(i=0; i < nbr_rest; i++){                                          <img src="data:image/jpeg;base64,{binary data}" />
 			$.each(updated_restaurants, function(index,restaurantName) {
-				$('#list .results').append('<li class="restaurant"><img src="data:image/jpeg;base64,{'+base64encode+'('+restauranImageData[0]+')'+'}"><h3 class="name" id="rest'+index+'">' + restaurantName + '</h3><p>Click the Restaurant name</p></li>')
+				//$('#list .results').append('<li class="restaurant"><img src="data:image/jpeg;base64,{'+base64encode+'('+restauranImageData[0]+')'+'}"><h3 class="name" id="rest'+index+'">' + restaurantName + '</h3><p>Click the Restaurant name</p></li>')
+				//});
+							$('#list .results').append('<li class="restaurant"><img src="images/logo.png"><h3 class="name" id="rest'+index+'">' + restaurantName + '</h3><p>Click the Restaurant name</p></li>')
 				});
 			//}
 		};

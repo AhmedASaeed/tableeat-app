@@ -1,19 +1,151 @@
-(function() {
+	var quantities_starters = [];
+	var quantities_mains = [];
+	var quantities_desserts = [];
+	var quantities_drinks = [];
+	var selected_starters = [];
+	var selected_mains = [];
+	var selected_desserts = [];
+	var selected_drinks = [];
+	
+	
+function getTitleHeader() {
 	var url = document.location.href, params = url.split('?')[1].split('&'), data = {}, tmp;
 	for (var i = 0, l = params.length; i < l; i++) {
 		tmp = params[i].split('=');
 		data[tmp[i]] = tmp[i+1];
+		console.log('data[tmp[i]] : ' + data[tmp[i]]);
+		console.log('tmp[i+1] : ' + tmp[i+1]);
 		document.getElementById('title_header').innerHTML = decodeURI(data[tmp[i]]);
 	}
-}());
+}
 
-(function() {
+
+function openFirst(cityName) {
+    var i;
+    var x = document.getElementsByClassName("city");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none"; 
+    }
+    document.getElementById(cityName).style.display = "block";
+}
+
+openFirst("London");
+getTitleHeader();
+
+$(document).ready(function() {
+        $(function () {
+            $('#datetimepicker5').datetimepicker();
+        });
+        
+        $('#savemenu').on('click',function(){
+        });
+   
+
+ });
+
+function initAutocomplete() {
+	  var map = new google.maps.Map(document.getElementById('map'), {
+	    center: {lat: 37.2787948, lng: 126.9908305},
+	    zoom: 13,
+	    mapTypeControl: false, 
+	    streetViewControl: false,
+	    mapTypeId: google.maps.MapTypeId.ROADMAP
+	  });
+
+	  // Create the search box and link it to the UI element.
+	  var input = document.getElementById('pac-input');
+	  var searchBox = new google.maps.places.SearchBox(input);
+	  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+	  // Bias the SearchBox results towards current map's viewport.
+	  map.addListener('bounds_changed', function() {
+	    searchBox.setBounds(map.getBounds());
+	  });
+
+	  var markers = [];
+	  // [START region_getplaces]
+	  // Listen for the event fired when the user selects a prediction and retrieve
+	  // more details for that place.
+	  searchBox.addListener('places_changed', function() {
+	    var places = searchBox.getPlaces();
+
+	    if (places.length == 0) {
+	      return;
+	    }
+
+	    // Clear out the old markers.
+	    markers.forEach(function(marker) {
+	      marker.setMap(null);
+	    });
+	    markers = [];
+
+	    // For each place, get the icon, name and location.
+	    var bounds = new google.maps.LatLngBounds();
+	    places.forEach(function(place) {
+	      var icon = {
+	        url: place.icon,
+	        size: new google.maps.Size(71, 71),
+	        origin: new google.maps.Point(0, 0),
+	        anchor: new google.maps.Point(17, 34),
+	        scaledSize: new google.maps.Size(25, 25)
+	      };
+
+	      // Create a marker for each place.
+	      markers.push(new google.maps.Marker({
+	        map: map,
+	        icon: icon,
+	        title: place.name,
+	        position: place.geometry.location
+	      }));
+
+	      if (place.geometry.viewport) {
+	        // Only geocodes have viewport.
+	        bounds.union(place.geometry.viewport);
+	      } else {
+	        bounds.extend(place.geometry.location);
+	      }
+	    });
+	    map.fitBounds(bounds);
+	  });
+	  // [END region_getplaces]
+	};
+
+function openCity(evt, cityName, map) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("city");
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+     tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.firstElementChild.className += " w3-border-red";
+  if(cityName == "London")
+	  initAutocomplete();
+  
+  if(cityName == "Paris"){
+	  $('.menu-description').remove();
+	  getMenu();
+  }
+}
+
+function getMenu() {
 	var resname = document.getElementById('title_header').innerHTML;
 	console.log(resname);
+	nbr_starters = 0;
+	nbr_main = 0;
+	nbr_dessert = 0;
+	nbr_drink = 0;
 	var main = [];
 	var starter = [];
-	var desert = [];
+	var dessert = [];
 	var drink = [];
+	var updated_starters = [];
+	var updated_main = [];
+	var updated_dessert = [];
+	var updated_drink = [];
 	var urll = 'http://localhost:3000/api/restaurants/' + resname;
 	var notSupported = function() {
 		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
@@ -55,44 +187,290 @@
 					}
 				}
 			}
-			recursiveGetProperty(data, "main", function(obj) {
-				// do something with it.
+			recursiveGetProperty(data, "mainItem", function(obj) {
 				main[main.length] = obj;
 
 			});
-			recursiveGetProperty(data, "starters", function(obj) {
-				// do something with it.
+			recursiveGetProperty(data, "starterItem", function(obj) {
 				starter[starter.length] = obj;
 
 			});
-			recursiveGetProperty(data, "dessert", function(obj) {
-				// do something with it.
-				desert[desert.length] = obj;
+			recursiveGetProperty(data, "dessertItem", function(obj) {
+				dessert[dessert.length] = obj;
 
 			});
-			recursiveGetProperty(data, "drink", function(obj) {
-				// do something with it.
+			recursiveGetProperty(data, "drinkItem", function(obj) {
 				drink[drink.length] = obj;
 
 			});
 
-			document.getElementById('starters').innerHTML = starter[0];
-			document.getElementById('main').innerHTML = main[0];
-			document.getElementById('dessert').innerHTML = desert[0];
-			document.getElementById('drink').innerHTML = drink[0];
+			nbr_starters = starter.length;
+			nbr_main = main.length;
+			nbr_dessert = dessert.length;
+			nbr_drink = drink.length;
+			update_list(starter,main,dessert,drink);
+			addActions();
+			
+			
+			function handleStarter(i) {
+				document.getElementById('starter' + i).innerHTML = starter[i];
+			}
+			
+			function handleMain(i) {
+				document.getElementById('main' + i).innerHTML = main[i];
+			}
+			
+			function handleDessert(i) {
+				document.getElementById('dessert' + i).innerHTML = dessert[i];
+			}
+			
+			function handleDrink(i) {
+				document.getElementById('drink' + i).innerHTML = drink[i];
+			}
+
+			for (i = 0; i < nbr_starters; i++)
+				handleStarter(i);
+			
+			for (i = 0; i < nbr_main; i++)
+				handleMain(i);
+			
+			for (i = 0; i < nbr_dessert; i++)
+				handleDessert(i);
+			
+			for (i = 0; i < nbr_drink; i++)
+				handleDrink(i);
+
 			console.log(urll);
-
-			// ///
-
-			/*
-			 * function traverse_it(obj){ for(var prop in obj){ if(typeof
-			 * obj[prop]=='object'){ // object traverse_it(obj[prop[i]]); }else{ //
-			 * something else alert('The value of '+prop+' is '+obj[prop]+'.'); } } }
-			 * 
-			 * traverse_it(data);
-			 */
-
 		}
-
 	});
-}());
+	function update_list(updated_starters,updated_main,updated_dessert,updated_drink) {
+		$.each(updated_starters, function(index,starterName) {
+			$('#results-starters').append('<div class="menu-description"><li class="menu-item"><div class="menu-item-line"><input id="nbr-starter'+index+'" type="text" name="starter'+index+'" value="0" readonly><img class="update-menu" id="add-starter'+index+'" src="images/add.png" height="20" width="20"><img class="update-menu" id="remove-starter'+index+'" src="images/remove.png" height="20" width="20"><h4 class="name" id="starter'+index+'">' + starterName + '</h4></div></li><hr></div>')
+			});
+		$.each(updated_main, function(index,mainName) {
+				$('#results-main').append('<div class="menu-description"><li class="menu-item"><div class="menu-item-line"><input id="nbr-main'+index+'" type="text" name="main'+index+'" value="0" readonly><img class="update-menu" id="add-main'+index+'" src="images/add.png" height="20" width="20"><img class="update-menu" id="remove-main'+index+'" src="images/remove.png" height="20" width="20"><h4 class="name" id="main'+index+'">' + mainName + '</h4></div></li><hr></div>')
+			});
+		$.each(updated_dessert, function(index,dessertName) {
+				$('#results-dessert').append('<div class="menu-description"><li class="menu-item"><div class="menu-item-line"><input id="nbr-dessert'+index+'" type="text" name="dessert'+index+'" value="0" readonly><img class="update-menu" id="add-dessert'+index+'" src="images/add.png" height="20" width="20"><img class="update-menu" id="remove-dessert'+index+'" src="images/remove.png" height="20" width="20"><h4 class="name" id="dessert'+index+'">' + dessertName + '</h4></div></li><hr></div>')
+			});
+		$.each(updated_drink, function(index,drinkName) {
+				$('#results-drink').append('<div class="menu-description"><li class="menu-item"><div class="menu-item-line"><input id="nbr-drink'+index+'" type="text" name="drink'+index+'" value="0" readonly><img class="update-menu" id="add-drink'+index+'" src="images/add.png" height="20" width="20"><img class="update-menu" id="remove-drink'+index+'" src="images/remove.png" height="20" width="20"><h4 class="drink" id="drink'+index+'">' + drinkName + '</h4></div></li><hr></div>')
+		});
+			
+	};
+	function addActions(){
+		function handleStarterClick(i) {
+			var start = "#add-starter"+i;
+			var rstart = "#remove-starter"+i;
+			var startt = "#nbr-starter"+i;
+			var starteritem = "starter"+i;
+			$(start).on('click',function(){
+				console.log(nbr_starters);
+	            $(startt).val(parseInt($(startt).val())+1);
+	            selected_starters[i] = document.getElementById(starteritem).innerHTML;
+	            console.log(selected_starters[i]);
+	            quantities_starters[i] = $(startt).val();
+	        });
+			
+			$(rstart).on('click',function(){
+	        	if($(startt).val() <= 0) 
+	        		$(startt).val("0");
+	        	else
+	        		$(startt).val(parseInt($(startt).val())-1);
+	        	selected_starters[i] = document.getElementById(starteritem).innerHTML;
+	        	quantities_starters[i] = $(startt).val();
+	        });
+		}
+		
+		function handleMainClick(i){
+			var amain = "#add-main"+i;
+			var nmain = "#nbr-main"+i;
+			var rmain = "#remove-main"+i;
+			var mainitem = "main"+i;
+			$(amain).on('click',function(){
+	            $(nmain).val(parseInt($(nmain).val())+1);
+	            selected_mains[i] =document.getElementById(mainitem).innerHTML;
+	            quantities_mains[i] = $(nmain).val();
+	            console.log(quantities_mains[i]);
+	        });
+			
+			$(rmain).on('click',function(){
+	        	if($(nmain).val() <= 0) 
+	        		$(nmain).val("0");
+	        	else
+	        		$(nmain).val(parseInt($(nmain).val())-1);
+	        	    selected_mains[i] =document.getElementById(mainitem).innerHTML;
+	        	    quantities_mains[i] = $(nmain).val();
+	        });
+		}
+		
+		function handleDessertClick(i){
+			var adessert = "#add-dessert"+i;
+			var ndessert = "#nbr-dessert"+i;
+			var rdessert = "#remove-dessert"+i;
+			var dessertitem = "dessert"+i;
+			$(adessert).on('click',function(){
+	            $(ndessert).val(parseInt($(ndessert).val())+1);
+	            selected_desserts[i] = document.getElementById(dessertitem).innerHTML;
+	            quantities_desserts[i] = $(ndessert).val();
+	        });
+			
+			$(rdessert).on('click',function(){
+	        	if($(ndessert).val() <= 0) 
+	        		$(ndessert).val("0");
+	        	else
+	        		$(ndessert).val(parseInt($(ndessert).val())-1);
+	        	selected_desserts[i] = document.getElementById(dessertitem).innerHTML;
+	        	quantities_desserts[i] = $(ndessert).val();
+	        });
+		}
+		
+		function handleDrinkClick(i){
+			var adrink = "#add-drink"+i;
+			var ndrink = "#nbr-drink"+i;
+			var rdrink = "#remove-drink"+i;
+			var drinkitem = "drink"+i;
+			$(adrink).on('click',function(){
+	            $(ndrink).val(parseInt($(ndrink).val())+1);
+	            selected_drinks[i] = document.getElementById(drinkitem).innerHTML;
+	            quantities_drinks[i] = $(ndrink).val();
+	        });
+			
+			$(rdrink).on('click',function(){
+	        	if($(ndrink).val() <= 0) 
+	        		$(ndrink).val("0");
+	        	else
+	        		$(ndrink).val(parseInt($(ndrink).val())-1);
+	        	selected_drinks[i] = document.getElementById(drinkitem).innerHTML;
+	        	quantities_drinks[i] = $(ndrink).val();
+	        });
+		}
+		
+		for(i=0; i < nbr_starters; i++){
+			selected_starters[i] = 0;
+            quantities_starters[i] = 0;
+			handleStarterClick(i);
+		}
+		
+		for(i = 0; i < nbr_main; i++){
+			selected_mains[i] = 0;
+            quantities_mains[i] = 0;
+			handleMainClick(i);
+		}
+		
+		for(i=0; i < nbr_dessert; i++){
+			selected_desserts[i] = 0;
+            quantities_desserts[i] = 0;
+			handleDessertClick(i);
+		}
+			
+		for(i=0; i < nbr_drink; i++){
+			selected_drinks[i] = 0;
+            quantities_drinks[i] = 0;
+			handleDrinkClick(i);
+		}
+	};
+	
+	$('#book').on('click', function(e) {
+		e.preventDefault(); // I prevent the default behavior of the browser, ie submit the form
+
+		var $this = $(this); // jQuery object of the form
+
+		// Customer
+		var name = localStorage.getItem("name");
+		var email = localStorage.getItem("username");
+		
+		//Menu items
+		for(i=0; i < nbr_starters; i++){
+			console.log("starters[i] : " + starter[i]);
+		}
+		
+		//Time and persons
+		var nbr_people = $('#number-people').val();
+		var time = $('#date-time').val();
+		
+/*		JSON.stringify({ 
+			"bookUser": {"name" : name, "email" : email},
+			"bookmenu" : {
+		        "starters" :[{"starteritem" : starter[0], "quantity" : quantities_starters[0]}],
+		        "main" :[{"mainitem" : main[0], "quantity" : quantities_mains[0]}],
+		        "dessert" :[{"dessertitem" : dessert[0], "quantity" : quantities_desserts[0]}],
+		        "drink" :[{"drinkitem" : drink[0], "quantity" : quantities_drinks[0]}]
+		    },});*/
+		
+		for(i=0; i < quantities_starters.length; i++){
+			console.log("quantities_starters loo : "+i+" : " + quantities_starters[i]);
+		}
+		
+		for(i=0; i < quantities_mains.length; i++){
+			console.log("quantities_mains loo : "+i+" : " + quantities_mains[i]);
+		}
+		
+		for(i=0; i < quantities_desserts.length; i++){
+			console.log("quantities_desserts loo : "+i+" : " + quantities_desserts[i]);
+		}
+		
+		for(i=0; i < quantities_drinks.length; i++){
+			console.log("quantities_drinks loo : "+i+" : " + quantities_drinks[i]);
+		}
+		for(i=0; i < selected_starters.length; i++){
+			console.log("selected_starters loo : "+i+" : " + selected_starters[i]);
+		}
+		
+		for(i=0; i < selected_mains.length; i++){
+			console.log("selected_mains loo : "+i+" : " + selected_mains[i]);
+		}
+	
+		for(i=0; i < selected_desserts.length; i++){
+			console.log("selected_desserts loo : "+i+" : " + selected_desserts[i]);
+		}
+	
+		for(i=0; i < selected_drinks.length; i++){
+			console.log("selected_drinks loo : "+i+" : " + selected_drinks[i]);
+		}
+		
+		console.log(JSON.stringify({ 
+				"bookUser": {"name" : name, "email" : email},
+				"bookmenu" : {
+			        "starters" : $.each([starter ,quantities_starters], function(index,i) { [{"starteritem" : starter[index], "quantity" : quantities_starters[index] }]}),
+			        "main" : $.each([main ,quantities_mains],function(index,i) {[{"mainitem" : main[index], "quantity" : quantities_mains[index]}]}),
+			        "dessert" :$.each([dessert ,quantities_desserts], function(index,i) { [{"dessertitem" : dessert[index], "quantity" : quantities_desserts[index]}]}),
+			        "drink" :$.each([drink ,quantities_drinks], function(index,i) {[{"drinkitem" : drink[index], "quantity" : quantities_drinks[index]}]})
+			    }}));
+		
+	
+		
+		
+		console.log(JSON.stringify({ 
+			"bookUser": {"name" : name, "email" : email},
+			"bookmenu" : {
+		        "starters" :[{"starteritem" : starter[0], "quantity" : quantities_starters[1]}],
+		        "main" :[{"mainitem" : main[0], "quantity" : quantities_mains[1]}],
+		        "dessert" :[{"dessertitem" : dessert[0], "quantity" : quantities_desserts[1]}],
+		        "drink" :[{"drinkitem" : drink[0], "quantity" : quantities_drinks[1]}]
+		    }}));
+
+		// I check the first time to not run the HTTP request
+		// if I know my PHP will return an error
+		
+		if (name === '' || email === '') {
+			alert('Some informations are missing');
+		} else {
+			// Sending the HTTP request in asynchronous mode
+			$.ajax({
+				url : $this.attr('action'), // The name of the file indicated in the form
+				type : $this.attr('method'), // The method specified in the // form (get or post)
+				data : $this.serialize(),
+				dataType : 'json', // JSON// I serialize the data (I send all
+				// the values ​​present in the form)
+				success : function(data) {
+					//window.location.href = "account.html";
+				},
+				error: function(xhr,err){
+					if(xhr.status == 404) alert("You didn't register");
+				}
+			});
+		}
+	});
+};
+

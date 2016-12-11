@@ -647,7 +647,10 @@ text-align : center;
 }
 
 #typefood{
-	d:
+	width : 100%;
+	display: block;
+	height: 38px;
+    font-family: 'Titillium Web', sans-serif;
 }
 
 /* The Modal (background) */

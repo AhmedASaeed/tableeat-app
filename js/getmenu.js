@@ -176,7 +176,7 @@ function addReview(){
 
 		var numofstars = list[INDEX].value;
 		var reviwtext =  $('#reviewtext').val();
-		var regsend = '{"reviewer" :{"name" :"'+name+'", "email" :"'+email+'" },"reviewtext":"'+reviwtext+'","reviewstars" : "'+numofstars+'"}';
+		var regsend = '{"reviewer" :{"reviewername" :"'+name+'", "revieweremail" :"'+email+'" },"reviewtext":"'+reviwtext+'","reviewstars" : "'+numofstars+'"}';
 		var obj = JSON.parse(regsend);
 		
 		if (name === '' || email === '') {
@@ -250,7 +250,7 @@ function getReviews(){
 					}
 				}
 				/////Start lookup////// 
-				recursiveGetProperty(data, "name", function(obj) {
+				recursiveGetProperty(data, "reviewername", function(obj) {
 					reviewer[reviewer.length] = obj;
 
 				});

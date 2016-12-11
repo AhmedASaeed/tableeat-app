@@ -10,6 +10,16 @@ function openCity(evt, cityName, map) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.firstElementChild.className += " w3-border-red";
+  
+  if(cityName == "Paris"){
+	  $('.book').remove();
+	  getUserBookings();
+  }
+  if(cityName == "Tokyo"){
+	  $('.reviewtabapend').remove();
+	  //getReviews();
+  }
+  
 }
 
 function openFirst(cityName) {
@@ -24,11 +34,20 @@ function openFirst(cityName) {
 openFirst("Paris");
 
 function getUserBookings(){
-	var resname = document.getElementById('title_header').innerHTML;
+	//var resname = document.getElementById('title_header').innerHTML;
 	var nbr_bookings = 0;
 	var bookings = [];
 	var bookmenu = [];
-	var urll = 'http://localhost:3000/api/users/' + localStorage.getItem("username") +'/bookings';
+	var starters = [];
+	var main = [];
+	var dessert = [];
+	var drink = [];
+	var nbr_bookings = 0;
+	nbr_starters = 0;
+	nbr_main = 0;
+	nbr_dessert = 0;
+	nbr_drink = 0;
+	var urll = 'http://localhost:3000/api/bookings/' + localStorage.getItem("username");
 	var notSupported = function() {
 		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
 		element.className = 'fail';
@@ -71,34 +90,127 @@ function getUserBookings(){
 					}
 				}
 				/////Start lookup////// 
-				recursiveGetProperty(data, "bookmenu", function(obj) {
+				recursiveGetProperty(data, "restaurantName", function(obj) {
 					bookmenu[bookmenu.length] = obj;
+				});
+			
+				recursiveGetProperty(data, "starteritem", function(obj) {
+					starters[starters.length] = obj;
+				});
+				recursiveGetProperty(data, "mainitem", function(obj) {
+					main[main.length] = obj;
+				});
+				recursiveGetProperty(data, "dessertitem", function(obj) {
+					dessert[dessert.length] = obj;
+				});
+				recursiveGetProperty(data, "drinkitem", function(obj) {
+					drink[drink.length] = obj;
 				});
 				
 				nbr_bookings = bookmenu.length;
 				updateListBooking();
-				for (i = 0; i < bookmenu.length; i++) {
-					bookings[i] = document.getElementById('booking' + i);
-					console.log(bookings[i]);
+				nbr_starters = starters.length;
+				nbr_main = main.length;
+				nbr_dessert = dessert.length;
+				nbr_drink = drink.length;
+				console.log("nbr_bookings : " + nbr_bookings);
+				console.log("nbr_starters : " + nbr_starters);
+				console.log("nbr_main : " + nbr_main);
+				console.log("nbr_dessert : " + nbr_dessert);
+				console.log("nbr_drink : " + nbr_drink);
+				
+				for (i = 0; i < nbr_bookings; i++){
+					console.log(nbr_bookings+":nbr_drink : " + bookmenu[i]);
+					}
+				
+				for (i = 0; i < nbr_bookings; i++){
+					handleElementBooking(i);
+					}
+				
+				
+				function handleElementBooking(i) {
+					document.getElementById('booking' + i).innerHTML = bookmenu[i];
 				}
-			}
-			function handleElementBooking(i) {
-				document.getElementById('booking' + i).innerHTML = bookings[i];
+				
+				function handleStarter(i) {
+					document.getElementById('starter' + i).innerHTML = starters[i];
+				}
+				
+				function handleMain(i) {
+					document.getElementById('main' + i).innerHTML = main[i];
+				}
+				
+				function handleDessert(i) {
+					document.getElementById('dessert' + i).innerHTML = dessert[i];
+				}
+				
+				function handleDrink(i) {
+					document.getElementById('drink' + i).innerHTML = drink[i];
+				}
+				
+				for (i = 0; i < nbr_bookings; i++){
+					handleElementBooking(i);
+					}
+
+				for (i = 0; i < nbr_starters; i++)
+					handleStarter(i);
+				
+				for (i = 0; i < nbr_main; i++)
+					handleMain(i);
+				
+				for (i = 0; i < nbr_dessert; i++)
+					handleDessert(i);
+				
+				for (i = 0; i < nbr_drink; i++)
+					handleDrink(i);
+				
+				for (i = 0; i < nbr_drink; i++)
+					console.log("starter : " + starters[i]);
 			}
 
-			for (i = 0; i < nbr_rest; i++)
-				handleElementBooking(i);
-		});
+	});
+		
 		function updateListBooking(){
-			for (i = 0; i < bookings.length; i++){
-				$('#results').append('<li class="restaurant"><img src="images/profile.png" ><h3 class="name" id ="booking0">The Grasslands</h3><h5>'+reviewtext[i]+'</h5><hr>');
-				
-				
-					
-					
-					<p>Menu</p>
-			
-			</li>
+			var indexx;
+			for(indexx = 0; indexx < bookmenu.length/2; indexx++){
+				$('#results').append('<li class="book"><h3 class="name" id ="booking'+indexx+'">'+bookmenu[indexx]+'</h3><p id="booktime'+indexx+'">Date and time</p><dl id="menu-description'+indexx+'"></dl><hr></li>');
 			}
-		}	
+			
+			for(index = 0; index < starters.length/2; index++){
+				$('#menu-description0').append('<dt id="starter'+index+'">'+ index +' : </dt>');
+			}
+			
+			for(index = 0; index < main.length/2; index++){
+				$('#menu-description0').append('<dt id="main'+index+'">' +index+ ' : </dt>');
+			}
+			
+			for(index = 0; index < dessert.length/2; index++){
+				$('#menu-description0').append('<dt id="dessert'+index+'">' +index +' : </dt>');
+			}
+			
+			for(index = 0; index < drink.length/2; index++){
+				$('#menu-description0').append('<dt id="drink'+index+'">'+index+ ' : </dt>');
+			}
+			for(index = bookmenu.length/2; index < bookmenu.length; index++){
+				$('#results').append('<li class="book"><h3 class="name" id ="booking'+index+'">'+bookmenu[index]+'</h3><p id="booktime'+index+'">Date and time</p><dl id="menu-description"></dl><hr></li>');
+			}
+			
+			for(index = starters.length/2; index < starters.length; index++){
+				$('#menu-description').append('<dt id="starter'+index+'">'+ index +' : </dt>');
+			}
+			
+			for(index = main.length/2; index < main.length; index++){
+				$('#menu-description').append('<dt id="main'+index+'">' +index+ ' : </dt>');
+			}
+			
+			for(index = dessert.length/2; index < dessert.length; index++){
+				$('#menu-description').append('<dt id="dessert'+index+'">' +index +' : </dt>');
+			}
+			
+			for(index = drink.length/2; index < drink.length; index++){
+				$('#menu-description').append('<dt id="drink'+index+'">'+index+ ' : </dt>');
+			}
+			
+		}
+					
 }

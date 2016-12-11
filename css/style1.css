@@ -439,7 +439,7 @@ text-align : center;
   background-color: #ffffff;
   margin: 5px;
   overflow: auto;
-  height:600px;
+  height:800px;
 }
 
 #collapse1,
@@ -541,8 +541,13 @@ text-align : center;
 }
 
 .restaurant p, 
-.menu-item p {
+.menu-item p,
+.book p {
   font-family : 'Titillium Web', sans-serif;
+}
+
+.book dt{
+	font-family : 'Titillium Web', sans-serif;
 }
 
 .restaurant:hover {
@@ -566,7 +571,8 @@ text-align : center;
 	float: right;
 }
 
-.restaurant{
+.restaurant,
+.order{
   padding-top: 10px;
   overflow: auto;
 }

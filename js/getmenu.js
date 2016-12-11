@@ -470,15 +470,7 @@ function getMenu() {
 		//Time and persons
 		var nbr_people = $('#number-people').val();
 		var time = $('#date-time').val();
-		
-/*		JSON.stringify({ 
-			"bookUser": {"name" : name, "email" : email},
-			"bookmenu" : {
-		        "starters" :[{"starteritem" : starter[0], "quantity" : quantities_starters[0]}],
-		        "main" :[{"mainitem" : main[0], "quantity" : quantities_mains[0]}],
-		        "dessert" :[{"dessertitem" : dessert[0], "quantity" : quantities_desserts[0]}],
-		        "drink" :[{"drinkitem" : drink[0], "quantity" : quantities_drinks[0]}]
-		    },});*/
+
 		
 		for(i=0; i < quantities_starters.length; i++){
 			console.log("quantities_starters loo : "+i+" : " + quantities_starters[i]);
@@ -511,19 +503,6 @@ function getMenu() {
 			console.log("selected_drinks loo : "+i+" : " + selected_drinks[i]);
 		}
 		
-		
-		 /*
-		console.log(JSON.stringify({ 
-			"bookUser": {"name" : name, "email" : email},
-			"bookmenu" : {
-		        "starters" :  [{"starteritem" : $.each(starter , function(index) {starter[index]}), "quantity" :  $.each(quantities_starters , function(index) {quantities_starters[index]}) }],
-		        "main" : [{"mainitem" : $.each(main,function(index) {main[index]}), "quantity" : $.each(quantities_mains,function(index) {quantities_mains[index]})}],
-		        "dessert" : [{"dessertitem" :$.each(dessert, function(index) { dessert[index]}), "quantity" : $.each(quantities_desserts, function(index) {quantities_desserts[index]})}],
-		        "drink" :[{"drinkitem" : $.each(drink, function(index) {drink[index]}), "quantity" :  $.each(quantities_drinks, function(index) {quantities_drinks[index]})}]
-		    }}));
-		*/
-
-		
 		var reqStarter = '{"starters" :[{"starteritem" : "'+starter[0]+'", "quantity" : "'+quantities_starters[0]+'"}';
 		for(i=1; i < starter.length; i++){
 			if(i == starter.length-1)
@@ -553,11 +532,35 @@ function getMenu() {
 				reqdrink = reqdrink + ',{"drinkitem" : "'+drink[i]+'", "quantity" : "'+quantities_drinks[i]+'"}';
 		}
 		var reguser = '{"bookUser": {"name" : "'+name+'", "email" : "'+email+'"},"bookmenu" :';
-		var timedate = $('.input-group date#datetimepicker5').datetimepicker('getDate');
+		
+		
+		
+		var timedate = $(function(){
+		    
+		    $('#datepicker').datetimepicker({
+		    onSelect: function(dateText, inst) {
+		      $("input[name='something']").val(dateText);
+		      console.log("new"+dateText);
+		    }
+		});
+
+		});
+		
+		
+		var datepicker = $('#datetimepicker5').datetimepicker()
+	    .on('changeDate', function(e) {
+	    	alert(timedate);
+	    	alert($('#date-time').val($(e.currentTarget).val()));//1
+	      // alert($('#date-time').val(datetimepicker.getDate()));//2
+
+	    });
+		console.log("hhhhhhhhhhhhhhh"+datepicker);
+		
+		
 		var list = document.getElementById('number-people');var INDEX = list.selectedIndex;
 
 		var numofpeople = list[INDEX].value;
-		var regtimeandnump = '"bookingtime" : "timedate","numberOfpeople" :"'+numofpeople+'"}';
+		var regtimeandnump = '"bookingtime" : "timedate","numberOfpeople" :"'+numofpeople+'","restaurantName" : "'+resname+'"}';
 		console.log(reqStarter);
 		console.log(reqmain);
 		console.log(reqdessert);
@@ -565,16 +568,10 @@ function getMenu() {
 		console.log(regtimeandnump);
 		console.log(reguser+reqStarter+reqmain+reqdessert+reqdrink+regtimeandnump);
 		var regsend = reguser+reqStarter+reqmain+reqdessert+reqdrink+regtimeandnump;
-		/*console.log({ 
-			"bookUser": {"name" : name, "email" : email},
-			"bookmenu" : 
-		        reqStarter+
-		        reqmain+
-		        reqdessert+
-		        reqdrink
-		    });
-		    */
-
+		
+		var obj = JSON.parse(regsend);
+		console.log('final JSON : ' + obj);
+		
 		// I check the first time to not run the HTTP request
 		// if I know my PHP will return an error
 		
@@ -585,12 +582,12 @@ function getMenu() {
 			$.ajax({
 				url : 'http://localhost:3000/api/restaurants/' + resname + '/bookings', // The name of the file indicated in the form
 				type : 'POST', // The method specified in the // form (get or post)
-				data : regsend,
+				data : obj,
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
 				success : function(data) {
-					alert(data.numberOfpeople);
-					window.location.href = "account.html";
+					alert(data);
+					//window.location.href = "account.html";
 				},
 				error: function(xhr,err){
 					if(xhr.status == 404) alert("You didn't register");

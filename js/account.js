@@ -12,11 +12,13 @@ function openCity(evt, cityName, map) {
   evt.currentTarget.firstElementChild.className += " w3-border-red";
   
   if(cityName == "Paris"){
+	  $('#no-booking').remove();
 	  $('.book').remove();
 	  getUserBookings();
   }
   if(cityName == "Tokyo"){
 	  $('.reviewtabapend').remove();
+	  $('#no-booking').remove();
 	  //getReviews();
   }
   
@@ -32,6 +34,7 @@ function openFirst(cityName) {
 }
 
 openFirst("Paris");
+getUserBookings();
 
 function getUserBookings(){
 	//var resname = document.getElementById('title_header').innerHTML;
@@ -172,6 +175,11 @@ function getUserBookings(){
 		
 		function updateListBooking(){
 			
+			if(nbr_bookings == 0){
+				$('#results').append('<div id="no-booking"><h1>You dont have any booking</h1></div>');
+			}
+			else{
+				
 			var indexx;
 			for(indexx = 0; indexx < bookmenu.length/2; indexx++){
 				$('#results').append('<li class="book"><h3 class="name" id ="booking'+indexx+'">'+bookmenu[indexx]+'</h3><p id="booktime'+indexx+'">Date and time</p><dl id="menu-description'+indexx+'"></dl><hr></li>');
@@ -211,7 +219,7 @@ function getUserBookings(){
 			for(index = drink.length/2; index < drink.length; index++){
 				$('#menu-description').append('<dt id="drink'+index+'">'+index+ ' : </dt>');
 			}
-			
+		}
 		}
 					
 }

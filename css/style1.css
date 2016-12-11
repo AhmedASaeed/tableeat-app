@@ -268,13 +268,21 @@ textarea {
 	color: #000000;
 }
 
-#typefood label{
+#typefood label,
+#pricerange label{
 	display: inline-block;
 }
 
 #typefood select{
 	display: inline-block;
 	margin-top: 40px;
+	margin-left: 10px;
+}
+
+#pricerange select{
+	display: inline-block;
+	margin-top: 5px;
+	margin-left: 10px;
 }
 
 .top-row:after {
@@ -482,6 +490,11 @@ text-align : center;
 	height: 400px;
 }
 
+#results h1{
+	margin-top:25px;
+	color:#000000;
+}
+
 .name {
 	  font: bold 'Titillium Web', sans-serif;
 }
@@ -675,7 +688,12 @@ text-align : center;
 	margin-bottom: 30px;
 }
 
-#typefood{
+#myBtn{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#typefood,
+#pricerange{
 	width : 100%;
 	display: block;
 	height: 38px;
@@ -761,5 +779,8 @@ text-align : center;
 .information-precise p{
 	font-family: 'Titillium Web', sans-serif;
 	float: right;
-	font-weight: bold;
+}
+
+textarea{
+	color:#000000;
 }

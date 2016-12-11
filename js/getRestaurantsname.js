@@ -7,6 +7,9 @@
 	var updated_restaurants = [];
 	var restaurantsnames = [];
 	var restauranImageData = [];
+	var priceRange = [];
+	var description = [];
+	var type = [];
 	var notSupported = function() {
 		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
 		element.className = 'fail';
@@ -55,8 +58,19 @@
 						// do something with it.
 						restaurantsnames[restaurantsnames.length] = obj;
 					});
-					/////////////////////
-				
+					recursiveGetProperty(data, "priceRange", function(obj) {
+						// do something with it.
+						priceRange[priceRange.length] = obj;
+					});
+					recursiveGetProperty(data, "description", function(obj) {
+						// do something with it.
+						description[description.length] = obj;
+					});
+					recursiveGetProperty(data, "type", function(obj) {
+						// do something with it.
+						type[type.length] = obj;
+					});
+					
 					recursiveGetProperty(data, "img", function(obj) {
 						// do something with it.
 						recursiveGetProperty(obj, "data", function(obj) {
@@ -65,35 +79,12 @@
 					});
 					console.log(restauranImageData[0]);
 					
-					////////////////////////
-					
-				
-					
-					
-					
 					nbr_rest = restaurantsnames.length;
-					update_list(restaurantsnames);
+					updateRestaurants();
 					for (i = 0; i < restaurantsnames.length; i++) {
 						rest[i] = document.getElementById('rest' + i);
-						
-						//console.log(restaurantsnames[i]);
-						//updated_restaurants[updated_restaurants.length] = [restaurantsnames[i]];
-						//rest[i].innerHTML = restaurantsnames[i];
-						//rest[i] = restaurantsnames[i];
 						console.log(rest[i]);
 					}
-					
-					console.log(nbr_rest);
-					
-					//nbr_rest = restaurantsnames.length;
-					/*
-					 * function traverse_it(obj){ for(var prop in obj){
-					 * if(typeof obj[prop]=='object'){ // object
-					 * traverse_it(obj[prop[i]]); }else{ // something else
-					 * alert('The value of '+prop+' is '+obj[prop]+'.'); } } }
-					 * 
-					 * traverse_it(data);
-					 */
 				}
 
 				function handleElement(i) {
@@ -118,17 +109,10 @@
 	function base64encode(binary) {
         return btoa(unescape(encodeURIComponent(binary)));
     }
-
-	function update_list(updated_restaurants) {
-
-		  // clear the existing list
-		  //$('#list .results li').remove();
-		//for(i=0; i < nbr_rest; i++){                                          <img src="data:image/jpeg;base64,{binary data}" />
-			$.each(updated_restaurants, function(index,restaurantName) {
-				//$('#list .results').append('<li class="restaurant"><img src="data:image/jpeg;base64,{'+base64encode+'('+restauranImageData[0]+')'+'}"><h3 class="name" id="rest'+index+'">' + restaurantName + '</h3><p>Click the Restaurant name</p></li>')
-				//});
-							$('#list .results').append('<li class="restaurant"><img src="images/logo.png"><h3 class="name" id="rest'+index+'">' + restaurantName + '</h3><p>Click the Restaurant name</p></li>')
-				});
-			//}
-		};
+	
+	function updateRestaurants(){
+		for (i = 0; i < nbr_rest; i++){
+			$('#list .results').append('<li class="restaurant"><img src="images/logo.png"><h3 class="name" id="rest'+i+'">' + restaurantsnames[i] + '</h3><p>' + type[i] + '</p><p>' + description[i] + '</p><p>' + priceRange[i] + '</p></li><hr>');
+		}
+	}
 }());

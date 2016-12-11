@@ -28,13 +28,6 @@
 <link href="css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style1.css">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
@@ -48,10 +41,8 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand"><a id="email" href="account.html">emailuser@gmail.com</a></li>
-				<img src="images/profile.png" href="account.html" id="profile"
-					height="50" width="50">
-				<li><a href="search.html">Search for a restaurant</a></li>
-				<li><a href="account.html">My account</a></li>
+				<img src="images/profile.png" href="account.html" id="profile" height="50" width="50">
+				<li><a href="ownerpage.html">My account</a></li>
 				<li><a href="about.html">About us</a></li>
 				<li><a href="faq.html">FAQ</a></li>
 				<li><a href="contact.html">Contact</a></li>
@@ -65,17 +56,6 @@
 			<img src="images/profile.png">
 			<h1 id="name_header">Firstname Lastname</h1>
 			<h2 id="email_header">Email</h2>
-<!-- 			<div class="w3">
-				<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
-					<div
-						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">My
-						orders</div>
-				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
-					<div
-						class="w3-half tablink w3-bottombar w3-hover-light-grey w3-padding">Update
-						Restaurant Information</div>
-				</a>
-			</div> -->
 		</div>
 		<!-- Page Content -->
 		<div class="container-fluid" id="orders-list">
@@ -97,61 +77,15 @@
 			<div id="line"></div>
 
 				<div id="Paris" class="w3-container city">
-			  		<ul class="results" id = "results">
-			    		<li class="restaurant">
-			    			<div class="order-item-line">
-			    				<div class="customer-information">
-			      					<img src="images/profile.png" >
-			      					<p id="first-name">First Last</p>
-			      					<p>Rating : </p>
-			      				</div>
-			      				<div class="order-information">
-			      					<h3 class="name" id ="order0">Today 9 PM</h3>
-			    					<p>Number of people : </p>
-			    					<dl>
-  										<dt>Starter : </dt>
-  										<dt>Main : </dt>
-  										<dt>Dessert : </dt>
-  										<dt>Drink : </dt>
-									</dl>
-			    				</div>
-<!-- 			    				<div class="order-buttons">
-			    					<button type="submit" id="decline-button" class="button button-block">Decline</button>
-			    					<button type="submit" id="accept-button" class="button button-block">Accept</button>
-			    				</div> -->
-			      			</div>
-			    		</li>
-			    				<hr>
-			    		<li class="restaurant">
-			    			<div class="order-item-line">
-			    				<div class="customer-information">
-			      					<img src="images/profile.png" >
-			      					<p>First Last</p>
-			      					<p>Rating : </p>
-			      				</div>
-			      				<div class="order-information">
-			      					<h3 class="name" id ="order0">Today 9 PM</h3>
-			    					<p>Number of people : </p>
-			    					<dl>
-  										<dt>Starter : </dt>
-  										<dt>Main : </dt>
-  										<dt>Dessert : </dt>
-  										<dt>Drink : </dt>
-									</dl>
-			    				</div>
-<!-- 			    				<div class="order-buttons">
-			    					<button type="submit" id="decline-button" class="button button-block">Decline</button>
-			    					<button type="submit" id="accept-button" class="button button-block">Accept</button>
-			    				</div> -->
-			      			</div>
-			    				</li>				
-			  				</ul>
+
+			  		<ul class="results" id = "results">		
+			  		</ul>
 				</div>
 
 				<div id="Tokyo" class="w3-container city">
 				  	<div id="create-restaurant">
 				  		<h1 id="register-restaurant">Register your restaurant</h1>		
-							<form id="register-restaurant-form" action="http://localhost:3000/api/restaurants" method="post">
+							
 								<div class="field-wrap-restaurant">
 									<div id="typefood">
 										<select  name="Select_type" id="type-food" aria-label="types">
@@ -173,10 +107,21 @@
 									<input placeholder="Address" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
 								</div>
 								<div class="field-wrap-restaurant">
-									<input type="file" id="rest-image" name="rest-image"  autocomplete="off" />
+									<input type="file" id="rest-image" name="rest-image"  value="Upload image" autocomplete="off" />
 								</div>
+								<textarea id="rest-description" placeholder="Describe your restaurant in a few words" ></textarea>
 								  <div data-role="main" class="ui-content">
     							<button id="myBtn">Add the menu</button>
+    							<div class="field-wrap-restaurant">
+									<div id="pricerange">
+										<select  name="Select_type" id="price-range" aria-label="types">
+											<option selected disabled>Price range :</option>
+											<option value="5-15 $">5-15 $</option>
+											<option value="15-35 $">15-35 $</option>
+											<option value="35-55 $">35-55 $</option>
+										</select>
+									</div>
+								</div>
 
 							<!-- The Modal -->
 							<div id="myModal" class="modal">
@@ -213,8 +158,8 @@
 
 						</div>
   							</div>
-								<button type="submit" id="register-restaurant" class="button button-block">Register restaurant</button>
-						</form> 
+								<button type="submit" id="register-restaurant" onclick="createRestaurant()" class="button button-block">Register restaurant</button>
+						 
 					</div>    					
 				</div>
 				
@@ -227,7 +172,7 @@
 
 	<!-- jQuery -->
 	<script src="js/jquery.js"></script>
-	<script src="js/main.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
 	<script src="js/ownerpage.js"></script>
 	<!-- Bootstrap Core JavaScript -->
 	<script src="js/bootstrap.min.js"></script>

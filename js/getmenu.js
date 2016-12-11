@@ -33,7 +33,7 @@ function openFirst(cityName) {
 
 openFirst("London");
 getTitleHeader();
-getAddress();
+getRestaurantInformation();
 
 $(document).ready(function() {
             $('#datetimepicker5').datetimepicker();
@@ -273,11 +273,16 @@ function getReviews(){
 		}
 }
 
-function getAddress(){
+function getRestaurantInformation(){
 	resname = document.getElementById('title_header').innerHTML;
 	var street;
 	var city;
 	var zipcode;
+	var description;
+	var priceRange;
+	var ownername;
+	var owneremail;
+	var type;
 	var urll = 'http://localhost:3000/api/restaurants/' + resname;
 	var notSupported = function() {
 		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
@@ -329,7 +334,27 @@ function getAddress(){
 				recursiveGetProperty(data, "zipcode", function(obj) {
 					zipcode = obj;
 				});
+				recursiveGetProperty(data, "description", function(obj) {
+					description = obj;
+				});
+				recursiveGetProperty(data, "priceRange", function(obj) {
+					priceRange = obj;
+				});
+				recursiveGetProperty(data, "ownername", function(obj) {
+					ownername = obj;
+				});
+				recursiveGetProperty(data, "owneremail", function(obj) {
+					owneremail = obj;
+				});
+				recursiveGetProperty(data, "type", function(obj) {
+					type = obj;
+				});
 				
+				$('#owner').append(ownername + " - email : " + owneremail);
+				$('#description').append(description);
+				$('#price').append(priceRange);
+				$('#type').append(type);
+				document.getElementById('typeoffood').innerHTML = type;
 				document.getElementById('address').innerHTML = street+","+city+","+zipcode;
 			}
 		});

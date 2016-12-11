@@ -29,6 +29,7 @@ $(document).ready(function() {
 				success : function(data) {
 					localStorage.setItem("username", data.username);
 					localStorage.setItem("name", data.firstname + " " + data.lastname);
+					localStorage.setItem("userExist", "newUser");
 					if(type == "Customer")
 						window.location.href = "search.html";
 					else
@@ -65,6 +66,7 @@ $(document).ready(function() {
 				// the values ​​present in the form)
 				success : function(data) {
 					localStorage.setItem("username", data.username);
+					localStorage.setItem("userExist", "oldUser");
 					if(data.type == "Customer")
 						window.location.href = "search.html";
 					else

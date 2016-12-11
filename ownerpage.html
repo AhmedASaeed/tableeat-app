@@ -40,11 +40,6 @@
 <body>
 
 <script>
-function addInput(){
-          var newInput = document.createElement('input');
-          newInput.innerHTML = "<label for='starter3' class='ui-hidden-accessible'>Starter3</label><input type='text' name='starter2' id='starter3' placeholder='Starter3'>";
-          document.getElementById('input-starters').append(newInput);
-}
 </script>
 
 	<div id="wrapper">
@@ -159,8 +154,8 @@ function addInput(){
 							<form id="register-restaurant-form" action="http://localhost:3000/api/restaurants" method="post">
 								<div class="field-wrap-restaurant">
 									<div id="typefood">
-										<select name="Select_type" id="type-food" aria-label="types">
-											<option selected disabled>Type of food</option>
+										<select  name="Select_type" id="type-food" aria-label="types">
+											<option selected disabled>Type OF Food :</option>
 											<option value="korean">Korean</option>
 											<option value="indian">Indian</option>
 											<option value="chinese">Chinese</option>
@@ -178,7 +173,7 @@ function addInput(){
 									<input placeholder="Address" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
 								</div>
 								<div class="field-wrap-restaurant">
-									<input type="file" id="rest-image" name="rest-image" required autocomplete="off" />
+									<input type="file" id="rest-image" name="rest-image"  autocomplete="off" />
 								</div>
 								  <div data-role="main" class="ui-content">
     							<button id="myBtn">Add the menu</button>
@@ -191,23 +186,29 @@ function addInput(){
     							<span class="close">&times;</span>
     								<div class="field-wrap-restaurant">
     									<h2>Starters :</h2>
-										<input placeholder="Starter 1" type="text" id="rest-name" name="rest-name" required autocomplete="off" />
+										<input placeholder="Starter 1" type="text" id="Starter1" name="rest-name" required autocomplete="off" />
 										<br>
-										<input placeholder="Starter 2" type="text" id="rest-name" name="rest-name" required autocomplete="off" />
+										<input placeholder="Starter 2" type="text" id="Starter2" name="rest-name" required autocomplete="off" />
 									</div>
 									<div class="field-wrap-restaurant">
 										<h2>Main dishes :</h2>
-										<input placeholder="Main dish 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+										<input placeholder="Main dish 1" type="text" id="Maindish1" name="rest-address" required autocomplete="off" />
+										<br>
+										<input placeholder="Main dish 1" type="text" id="Maindish2" name="rest-address" required autocomplete="off" />
 									</div>
 									<div class="field-wrap-restaurant">
 										<h2>Desserts :</h2>
-										<input placeholder="Dessert 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+										<input placeholder="Dessert 1" type="text" id="Dessert1" name="rest-address" required autocomplete="off" />
+										<br>
+										<input placeholder="Dessert 1" type="text" id="Dessert2" name="rest-address" required autocomplete="off" />
 									</div>
 									<div class="field-wrap-restaurant">
 										<h2>Drinks :</h2>
-										<input placeholder="Drink 1" type="text" id="rest-address" name="rest-address" required autocomplete="off" />
+										<input placeholder="Drink 1" type="text" id="Drink1" name="rest-address" required autocomplete="off" />
+										<br>
+										<input placeholder="Drink 1" type="text" id="Drink2" name="rest-address" required autocomplete="off" />
 									</div>
-									<button type="submit" id="save-menu-restaurant" class="button button-block">Save</button>
+									<button  id="save-menu-restaurant" class="button button-block">Save</button>
   							</div>
 
 						</div>

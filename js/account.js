@@ -171,6 +171,7 @@ function getUserBookings(){
 	});
 		
 		function updateListBooking(){
+			
 			var indexx;
 			for(indexx = 0; indexx < bookmenu.length/2; indexx++){
 				$('#results').append('<li class="book"><h3 class="name" id ="booking'+indexx+'">'+bookmenu[indexx]+'</h3><p id="booktime'+indexx+'">Date and time</p><dl id="menu-description'+indexx+'"></dl><hr></li>');

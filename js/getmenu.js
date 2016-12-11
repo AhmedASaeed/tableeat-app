@@ -134,10 +134,74 @@ function openCity(evt, cityName, map) {
   }
   if(cityName == "Tokyo"){
 	  $('.reviewtabapend').remove();
+	//Get the modal
+	  var modal = document.getElementById('myModal');
+
+	  // Get the button that opens the modal
+	  var btn = document.getElementById("myBtn");
+
+	  // Get the <span> element that closes the modal
+	  var span = document.getElementsByClassName("close")[0];
+
+	  // When the user clicks on the button, open the modal 
+	  btn.onclick = function() {
+	      modal.style.display = "block";
+	  }
+
+	  // When the user clicks on <span> (x), close the modal
+	  span.onclick = function() {
+	      modal.style.display = "none";
+	  }
+
+	  // When the user clicks anywhere outside of the modal, close it
+	  window.onclick = function(event) {
+	      if (event.target == modal) {
+	          modal.style.display = "none";
+	      }
+	  }
+	  addReview();
 	  getReviews();
   }
 }
 /////////////////////Start Review Tab/////////////////
+function addReview(){
+	var btnaddreviw = document.getElementById("save-reviw-restaurant");
+	btnaddreviw.onclick = function() {
+		
+		
+		var name = localStorage.getItem("name");
+		var email = localStorage.getItem("username");
+		
+		var list = document.getElementById('number-stars');var INDEX = list.selectedIndex;
+
+		var numofstars = list[INDEX].value;
+		var reviwtext =  $('#reviewtext').val();
+		var regsend = '{"reviewer" :{"name" :"'+name+'", "email" :"'+email+'" },"reviewtext":"'+reviwtext+'","reviewstars" : "'+numofstars+'"}';
+		var obj = JSON.parse(regsend);
+		
+		if (name === '' || email === '') {
+			alert('Some informations are missing');
+		} else {
+			// Sending the HTTP request in asynchronous mode
+			$.ajax({
+				url : 'http://localhost:3000/api/restaurants/' + resname + '/reviews', // The name of the file indicated in the form
+				type : 'POST', // The method specified in the // form (get or post)
+				data : obj,
+				dataType : 'json', // JSON// I serialize the data (I send all
+				// the values ​​present in the form)
+				success : function(data) {
+					alert("Thank you");
+					//window.location.href = "account.html";
+				},
+				error: function(xhr,err){
+					if(xhr.status == 404) alert("You didn't register");
+				}
+			});
+		}
+		 var modal = document.getElementById('myModal');
+		 modal.style.display = "none";
+	  }
+}
 function getReviews(){
 	resname = document.getElementById('title_header').innerHTML;
 	var reviewer = [];
@@ -205,7 +269,7 @@ function getReviews(){
 		});
 		function updateReview(){
 			for (i = 0; i < reviewer.length; i++){
-				$('#reviewtab').append('<div class="reviewtabapend"><h2>'+ reviewer[i]+'</h2><h3>'+reviewstars[i]+'</h3><h5>'+reviewtext[i]+'</h5><hr>');
+				$('#reviewtab').append('<div class="reviewtabapend"><h2>Reviewer :'+ reviewer[i]+'</h2><h3>Stars :'+reviewstars[i]+'</h3><h5>Comment :'+reviewtext[i]+'</h5><hr>');
 			}
 			
 		}

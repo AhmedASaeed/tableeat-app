@@ -19,6 +19,9 @@ a:hover {
   color: #179b77;
 }
 
+h4{
+	font-family: 'Titillium Web', sans-serif;
+}
 .form {
   background: rgba(19, 35, 47, 0.9);
   padding: 20px;
@@ -419,13 +422,7 @@ font-family: 'Titillium Web', sans-serif;
 text-align : center;
 }
 
-#name_header,
-#email_header,
-#title_header{
-	margin-top:15px;
-	font-size: 22px;
-	font-family : 'Titillium Web', sans-serif;
-}
+
 
 #list{
   background-color: #ffffff;
@@ -459,16 +456,23 @@ text-align : center;
 
 #accordion{
 	margin-top: 35px;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
+}
+#reservation-panel{
+	margin-top: 20px;
+}
+.panel .panel-default{
+	margin-top:10px;
+	margin-bottom:10px;
 }
 
- #accordion-elm{
-	margin-bottom: 50px;
+#savemenu{
+	margin-top: 15px;	
 }
-
 #datetimepicker5{
-	margin-left:10px;
+	margin-left:20px;
 }
+
 
 .results{
 	  list-style-type: none;
@@ -485,6 +489,26 @@ text-align : center;
 .restaurant img {
   float: left;
   margin-right:  10px;
+}
+	
+#name_header,
+#email_header,
+#title_header{
+	margin-top:15px;
+	font-size: 22px;
+	font-family : 'Titillium Web', sans-serif;
+}
+
+#restaurant-header h2{
+	font-family : 'Titillium Web', sans-serif;
+	font-size: 18px;
+}
+
+#restaurant-header img{
+	float: left;
+	margin-left:30px;
+  	margin-right: 5px;
+  	margin-bottom: 15px;
 }
 
 .menu-item-line,
@@ -517,6 +541,10 @@ text-align : center;
   margin-right:15px;
 }
 
+#number-people{
+	margin-left:10px;
+}
+
 .menu-item button {
   float: right;
   margin-top:15px;
@@ -536,6 +564,7 @@ text-align : center;
 .menu-item input{
 	display: inline-block;
     margin-top:10px;
+    margin-left: 20px;
 	width: 32px;
 	color:#000000;
 }
@@ -621,7 +650,7 @@ text-align : center;
 }
 
 #line{
-	height:2px;
+	height:1px;
 	width:100%;
 	background-color:#C0C0C0;
 }
@@ -704,4 +733,30 @@ text-align : center;
     font-size: 20px;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 300;
+}
+
+#address-restaurant{
+	margin-top:5px;
+	margin-bottom:5px;
+	font-family: 'Titillium Web', sans-serif;
+}
+#information-restaurant{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.information-precise{
+	margin-top:2px;
+	display: inline-block;
+}
+
+.information-precise img{
+	float: left;
+	margin-right: 5px;
+}
+
+.information-precise p{
+	font-family: 'Titillium Web', sans-serif;
+	float: right;
+	font-weight: bold;
 }

@@ -8,7 +8,6 @@
 	var selected_drinks = [];
 	var resname;
 	
-	
 function getTitleHeader() {
 
 	var url = document.location.href, params = url.split('?')[1].split('&'), data = {}, tmp;
@@ -34,16 +33,14 @@ function openFirst(cityName) {
 
 openFirst("London");
 getTitleHeader();
+getAddress();
 
 $(document).ready(function() {
-        $(function () {
             $('#datetimepicker5').datetimepicker();
-        });
-        
+	  
         $('#savemenu').on('click',function(){
         });
    
-
  });
 
 function initAutocomplete() {
@@ -125,9 +122,10 @@ function openCity(evt, cityName, map) {
   }
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.firstElementChild.className += " w3-border-red";
-  if(cityName == "London")
+  if(cityName == "London"){
 	  initAutocomplete();
-  
+  }
+	  
   if(cityName == "Paris"){
 	  $('.menu-description').remove();
 	  getMenu();
@@ -273,8 +271,68 @@ function getReviews(){
 			}
 			
 		}
-		
-	
+}
+
+function getAddress(){
+	resname = document.getElementById('title_header').innerHTML;
+	var street;
+	var city;
+	var zipcode;
+	var urll = 'http://localhost:3000/api/restaurants/' + resname;
+	var notSupported = function() {
+		element.innerHTML = 'Your browser doesn’t seem to support <code>xhr.responseType="json"</code> yet. :(';
+		element.className = 'fail';
+		};
+		var getJSON = function(url, successHandler, errorHandler) {
+			if (typeof XMLHttpRequest == 'undefined') {
+				return notSupported();
+			}
+			var xhr = new XMLHttpRequest();
+			xhr.open('get', url, true);
+			xhr.responseType = 'json';
+			xhr.onload = function() {
+				var status = xhr.status;
+				if (status == 200) {
+					successHandler && successHandler(xhr.response);
+				} else {
+					errorHandler && errorHandler(status);
+				}
+			};
+			xhr.send();
+		};
+		// load a non-JSON resource
+		getJSON(urll, function(data) {
+			if (typeof data == 'string') {
+				notSupported();
+			} else {
+
+				// alert('Your public IP address is: ' + data);
+				// /function that works
+				function recursiveGetProperty(obj, lookup, callback)
+				{
+					for (property in obj)
+					{
+						if (property == lookup) 
+						{
+							callback(obj[property]);
+						} else if (obj[property] instanceof Object) {
+							recursiveGetProperty(obj[property], lookup, callback);
+						}
+					}
+				}
+				recursiveGetProperty(data, "street", function(obj) {
+					street = obj;
+				});
+				recursiveGetProperty(data, "city", function(obj) {
+					city = obj;
+				});
+				recursiveGetProperty(data, "zipcode", function(obj) {
+					zipcode = obj;
+				});
+				
+				document.getElementById('address').innerHTML = street+","+city+","+zipcode;
+			}
+		});
 }
 /////////////////////End Review Tab/////////////////
 function getMenu() {
@@ -356,8 +414,7 @@ function getMenu() {
 			nbr_drink = drink.length;
 			update_list(starter,main,dessert,drink);
 			addActions();
-			
-			
+		
 			function handleStarter(i) {
 				document.getElementById('starter' + i).innerHTML = starter[i];
 			}
@@ -526,16 +583,16 @@ function getMenu() {
 		var name = localStorage.getItem("name");
 		var email = localStorage.getItem("username");
 		
+		
+		//Time and persons
+		var nbr_people = $('#number-people').val();
+
 		//Menu items
 		for(i=0; i < nbr_starters; i++){
 			console.log("starters[i] : " + starter[i]);
 		}
 		
-		//Time and persons
-		var nbr_people = $('#number-people').val();
-		var time = $('#date-time').val();
-
-		
+		//Quantities of each item
 		for(i=0; i < quantities_starters.length; i++){
 			console.log("quantities_starters loo : "+i+" : " + quantities_starters[i]);
 		}
@@ -597,34 +654,11 @@ function getMenu() {
 		}
 		var reguser = '{"bookUser": {"name" : "'+name+'", "email" : "'+email+'"},"bookmenu" :';
 		
-		
-		
-		var timedate = $(function(){
-		    
-		    $('#datepicker').datetimepicker({
-		    onSelect: function(dateText, inst) {
-		      $("input[name='something']").val(dateText);
-		      console.log("new"+dateText);
-		    }
-		});
-
-		});
-		
-		
-		var datepicker = $('#datetimepicker5').datetimepicker()
-	    .on('changeDate', function(e) {
-	    	alert(timedate);
-	    	alert($('#date-time').val($(e.currentTarget).val()));//1
-	      // alert($('#date-time').val(datetimepicker.getDate()));//2
-
-	    });
-		console.log("hhhhhhhhhhhhhhh"+datepicker);
-		
-		
 		var list = document.getElementById('number-people');var INDEX = list.selectedIndex;
 
 		var numofpeople = list[INDEX].value;
-		var regtimeandnump = '"bookingtime" : "timedate","numberOfpeople" :"'+numofpeople+'","restaurantName" : "'+resname+'"}';
+    	var timedate = $('#date-time').val();
+		var regtimeandnump = '"bookingtime" : "'+timedate+'","numberOfpeople" :"'+numofpeople+'","restaurantName" : "'+resname+'"}';
 		console.log(reqStarter);
 		console.log(reqmain);
 		console.log(reqdessert);
@@ -641,8 +675,11 @@ function getMenu() {
 		
 		if (name === '' || email === '') {
 			alert('Some informations are missing');
-		} else {
-			// Sending the HTTP request in asynchronous mode
+		} 
+		else if(timedate == '' || timedate == null){
+				alert('You must specify the date and time of the booking');
+		}
+		else {// Sending the HTTP request in asynchronous mode
 			$.ajax({
 				url : 'http://localhost:3000/api/restaurants/' + resname + '/bookings', // The name of the file indicated in the form
 				type : 'POST', // The method specified in the // form (get or post)
@@ -650,8 +687,7 @@ function getMenu() {
 				dataType : 'json', // JSON// I serialize the data (I send all
 				// the values ​​present in the form)
 				success : function(data) {
-					alert(data);
-					//window.location.href = "account.html";
+					window.location.href = "account.html";
 				},
 				error: function(xhr,err){
 					if(xhr.status == 404) alert("You didn't register");

@@ -9,130 +9,206 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>TableEat - Tizen application to book a table at a restaurant</title>
+<title>TableEat - Tizen application to book a table at a
+	restaurant</title>
 
 <!-- Bootstrap Core CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" />
 
 <!-- jQuery library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
 <!-- Custom CSS -->
 <link href="./css/simple-sidebar.css" rel="stylesheet">
 <link rel="stylesheet" href="./css/style1.css">
 <link rel="stylesheet" href="./css/w3.css">
 <style>
-.city {display:none;}
+.city {
+	display: none;
+}
 </style>
 
 </head>
 
 <body>
 	<div class="ui-header" id="header_page">
-		<a href="javascript:history.go(-1)">
-		<img src="images/back.png" id="menu-toggle">
+		<a href="javascript:history.go(-1)"> <img src="images/back.png"
+			id="menu-toggle">
 		</a>
-		<h1 id="title_header">Title</h1>
-		<img src="images/profile.png">
-		<h2>Type of food</h2>
+		<div id="restaurant-header">
+			<img src="images/profile.png">
+			<h1 id="title_header">Title</h1>
+			<h2>Type of food</h2>
+		</div>
+		
 	</div>
-	
+
 	<!-- Page Content -->
 	<div class="ui-content">
 		<div class="w3-container">
-  			<div class="w3-row">
-    			<a href="javascript:void(0)" onclick="openCity(event, 'London', 'map');">
-      			<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">Information</div>
-   				 </a>
-    			<a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
-      			<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Booking</div>
-    			</a>
-    			<a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
-      			<div class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Reviews</div>
-    			</a>
-  			</div>
-  			
-	<div id="line"></div>
-	
-  		<div id="London" class="w3-container city">
-    		<h2>Restaurant X</h2>
-    		<p>Type of food</p>
-    		<div id="map"></div>
-  		</div>
+			<div class="w3-row">
+				<a href="javascript:void(0)"
+					onclick="openCity(event, 'London', 'map');">
+					<div
+						class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-red">Information</div>
+				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Paris');">
+					<div
+						class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Booking</div>
+				</a> <a href="javascript:void(0)" onclick="openCity(event, 'Tokyo');">
+					<div
+						class="w3-third tablink w3-bottombar w3-hover-light-grey w3-padding">Reviews</div>
+				</a>
+			</div>
 
-  		<div id="Paris" class="w3-container city">
-			<div class="panel-group" id="accordion">
-				<div class="panel panel-default" id="accordion-elm">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#starters">Menu</a>
-						</h4>
-						<div id="starters" class="panel-heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-elm" href="#collapse1">Starters</a>
-							</h4>
-							<div id="collapse1" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul class="results" id="results-starters">
-									</ul>
-								</div>
-							</div>
+			<div id="line"></div>
+
+			<div id="London" class="w3-container city">
+				<h4>About the restaurant</h4>
+				<div id="map"></div>
+				<div id="address-restaurant">
+					<p id="address">Address : </p>
+				</div>
+				<div id="line"></div>
+				<div id="information-restaurant">
+					<div>
+						<div class="information-precise">
+							<img class="icon icons8-Phone" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAACfklEQVRoQ+2ZT27TQBTGv2cjsaScgN6A9ASUDTgIB3eNSOITEE7QcILCCZK4Yo3lSDiwITcgN6A3aLqjEvZD49QlTf1v3DRjS/Y2M5Pv9755857HhJo/VHP9aABUO9g4UFkHTN/pE/EJQHvZInnJTB+m7e5YBUzqFurMJuf54mPJvPSM3uOKATgsI8gzukryKcOBBkDGwNJjGwfi0FUxB5YAHhX1tnIApu/MifCstgAdfzIGUa+2AKtKjFERAGbYlavElj/aD0n/nQegUrzQllk9zZmzIOBpGoRq8UUABgScJAFUQXwugPVztBde6uebAFURnwsgBtw+jfhMexgeuM9tUSeUP7kdZHIy82fP6A2Uq89L4lhgx58MQXS8Lvivph98e/F2oRoi1wEhUORC8EdfEOHJf8HV2EqFAIRo8/upRcxf1yPOgDs1ukcqXSgMECX0bPIJoPc3BDN/9Nq9oSoIKYBoK13q883ipvJYlQIQUX7140vrQRjMN1ttVRDSAGsQv6pQ4EoBREmd0q3KOGHOnBEB/ez8yb53Kg2QCQGMp0bXzhJWTHy8Qvq9050AsiAAXmgcHrlt+2wTRE78anbaK+udAcTir/3TQ43Yvf0OzUsmzZ6+fCd+i54y4u8dIE5sPQjcm9V6JZqBuc6BHZB+nL/nkzfevToQ/+VVyyEgCl8GFC2AOwGIxSQ1f0WFpo3bKYAQIdrwAPp4W27sHOA6aX1HnPPDpNyQcUUZQOTGqofqgzEoC6IUYD3SooKDYBHwRsKBC8/oJn4p2kodkBByPfTqxLKIuMVMLQD7Ke5cMGOQdnGmDKAMdNKcBmBbkSy7TuNA2chta17tHfgH6DgNQC/+SUYAAAAASUVORK5CYII=" width="24" height="24">
+							<p>Phone :</p>
 						</div>
-						<div id="main"class="panel-heading">
-								<h4 class="panel-title">
-								<a data-toggle="collapse" data-parent="#accordion-elm" href="#collapse2">Main dishes</a>
-								</h4>
-							<div id="collapse2" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul class="results" id="results-main">
-									</ul>
-								</div>
-							</div>
+					</div>
+					<div>
+						<div class="information-precise">
+							<img class="icon icons8-Price-Tag-USD" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAELUlEQVRoQ92aT3IaORTGP7VcRXZxTjD4BGOfIHgzA1ODQ9apAD5BnBNkcgJzAwKuWYeBqYFkY/sEdk4Q5wTBuzhl9Uu9phuLBoPUklJT7hWFW+L99L73T2WBB/KIB8KBnwLSOO1uqxt5LEANQGy7Hh4BZ0Ti7b+1l2fZXsFBGCK+iU4BsesKkF8fk9jPYIKC6BAEfJKkGoPa4ZUrUH3SPxLAMRHOR7VmhfcLBrIEUVKVwf7h1BUiW38w6RN/HlabCUMQkNAQbHhwEFeIxrhbViJJDElMEcSlJPU6L8mgID4gYhFdLGc2mkYU7+kwwUBcIfj065P+QADPOIjlI9Xg79Q3ORACTwn4Z1RtJt8Fk5YPiJlxva/sjaiknmSJYba3/ArQ1bDa2gkG4gsiPWXOao8XQMbdcizkZyJ8GdWa5SAgPiEWpAWcyZJ6nkjrRr4XQCWYtHxDsNGcsWIhL9kruXpzHZVUWa9DXoI9BERmeJp+OyDMWhqBS1lS7XwxdQYJCWFT9Z1A/i8QTunXBWKm/egZRLQNxFdRHJ9zcfvj49+7MlbHHNi2fVghj7hAHHw4eQOiv/KyIaAjQO2kihO9HdZaS++sk5o1iAtE1m4nPRPhiwC9A1CGEK25kUS9Ya3VtokPa2m5QKRrP/OJ52sAS2orVjzdPSbC4ajWZECrx9gjLhBs0Z/jk0ok6JQ/65U6s7b+4aQhiN4DdDmstvasKEzbeFcINio99Yv7QPSWJBuOTGHu+q81g5UPiPmpj/tXQuCX++RzMOmx9Mq2IPVJvyuAti7ZhQmxKES67uI22nr+328vuMVInvq43xYC3XznqktPn7tNPJJBALiOSO1mM8ocpChEIpFx712SiVZkoHrqlXyKzQKeCEemwa5D3Eayoh/aHCQzJrntsLwomM8RpHbyI+ld0NM0KsU7euFjGN2YdR5ZBzFrydIn0+ttJPdMN9eDmg9gVG2uvLuqj/tnPOUVKXyJRNOYYDnlPZHZPwfJfoyA16Nqs2OiV35Hm+Cmw2rryap1LqnWBGLBI3c/llRhqyKVxYF+86cD6TXFJkOZQiyALGYZOxgtO01vo639vDTrkz5PeY38uOoSE/m1Sxd0d0aZw+jFD6ApBI6Gv7d6iey+b72aN42GzaGNJ5ZiRCe0gdF7Kg7GFWNqsnW+37rPG0UglqRVFCYBB1W4i+XP7BEB/Jrudw2ijkmbXhRiLYhLzJhmvIWDM0ix6/bdeIltI7MiAKZ1YtPeG0FCe8ZFTjqcEUgoGF8QG2Mk706fMvMJYQ3iyzO+IQqBuMKEgCgMUhQmFIQTiC1MSAhnEFOY0BBeQDbB/AwIbyCrYOQjNZj92wb4FvHeyW5TxTb9u3FBNNlQrzPa+8EhvHokM5wnTcTUSe+zzpWURzZ3ACYHtuodrx4paoSPdQ8G5Ad2U+Rgofj4cgAAAABJRU5ErkJggg==" width="24" height="24">
+							<p>Price :</p>
+					</div>
+					</div>
+					<div>
+						<div class="information-precise">
+							<img class="icon icons8-Clock" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAEiUlEQVRoQ+1ZXXLaSBDunqFC3uIbLD7B2icIvCQitRDyvGVhThD7BCEnCDmBDak8R4HUwubF7AmCTxDtCRbe4i1GvTVCONJohEaDnC1XRa/S9PTX/fWvEO75g/dcf/gJ4P/2YGkeaH0ePUbCOhEdIVANAI+S4GhBgD4iLghpPnni/lUG+L0AdKYXNYH8JQJ1ALBWTCHyCdDjJN56zZ5f7Oz3r60AdK4uDsQNf4MAp7YXx88RwCWvinOv0VsWlVcYQGs6OkWkNwB4UPSy3d/TkgjPJ033sojcQgBas9HFLqsTwEcg8CTXA86Wfzz5fSGVefb5/RETwUEYGwgdBHiepaT0xsRxe6YgjABElPmAAHVVMBH8DQD9opaTnpTnEOGXlEwAj1dFz4RSRgBas9GVRvkVScUdd2BqLd137emwD4hnAPBIiYv5xHEbebJzAehoI60uOO9sKZJ3Sd57STEuhKd6w4ROOwFsAhYuFMtc86qom7g3T/H4+4imcwT4NXEfQW8XPTMBSIHBDfsazzbS8vyhOCpb+a3CIYhvfJH0BC1ZNTjMujMTQHs6vATEbswaqzXjdVPatGcjilty7Li5dN1mrEog5omYIBqOm11tzdEKlRU2QP5Voc55kYC1BSDvjAL7Vfx+RuJQV7G1ANqz4QAAX24FSOpMmm6hVmEfAPLe1nTkK1R6O3a6MlslniwAkvu3ClNOIGnToyWFtrLSCYT8sdM9zAXw2/RdnSFd2fA3fmZfD2ySCP8nLnPN+LEagykPqPyT7cHEcTtFUmLI4z09ENJoNvISbQfR63Gz24/rkgKgHrKhT2kAlDqkM2baA7Phl/gwEhA2PjVPZFor9JThgTSdaTF2usc7PaBerOOdCZIyAMgWoxKIL7viUeMBuwKkglIB3BUVfxgACdAGRJ4ncwHYUkjXCBYFYUWh1my0iHeEtkEcVdNUN1sEhBrEBHA9cdzEtuPO0mh2Rd28MaGT6kWzNLqZkG4bKdtCFg/qLDrledeqkJXVSqhZKQViR4ssz1q3EhF3E52gibtNasMtiBzldfGT1REbtdMA+k7QRGn1G+lhk8reng0THTEAmbfTuoEGNI2UDQCTM3sPNGEzlhopablmlYbpSGmiqO6bTe5fXyU2f0VHylgQyaVrbF9DPqsGx3c51Ac3TDaT8elvxaqiVniozy5EtGDVoFE2iGgLIi2fKFSE+GLy9MTL8mjupkCznZBlyF+zyouy6BTR5kNqRW+QrXIBRJ6YI8LjpBVoCcgG46cnr235Hsban+9eAQVn6rbbtIAaAYgWTnL1p4AImwIfEPrsQfDRlFYhXf5lz4Ggr/sxIpXnVXFqIs8IwNbCejp9tz8BeIjkEaIvgK/i63UO4hES1YhQrtezZ2wD2sQ9XghALLDlRjqxTd6HRtHZFSGe7gpY3R2FAdym2G9soKwe7TEQDdnD4MyEMuolVgC2QjYVm52FtND8qNiFSPY2km6MgsEP/8mXWUHFukMY5vFaak0OcA0APhIt1rzilZWC9/KAPWfKO/kTQHm2tJN07z3wH/bFok/pYI95AAAAAElFTkSuQmCC" width="24" height="24">
+							<p>Hours :</p>
 						</div>
-						<div id="dessert"class="panel-heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-elm" href="#collapse3">Desserts</a>
-							</h4>
-							<div id="collapse3" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul class="results" id="results-dessert">
-									</ul>
-								</div>
-							</div>
+					</div>
+					<div>
+						<div class="information-precise">
+							<img class="icon icons8-Restaurant" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAEB0lEQVRoQ+1aXU7bQBCecZB4LJwAOEHhBIWX1qmaNH2uGocTFE5QeoLSE5AY9blpUjWmL8AJGk5AeoLCIxLxVOvEZnFs74xtSorgCTnr2flmZr/5WSMY/hqDg1XfWnCIaB2BfvdsZ0e9Uvc6+wT4VP2PQGex5yuIOLT86063uj3K2qI2cFto4QqAP7J8/9S03qQvmhbUjg4bSPRVrSOC0361uan+rw3cE0R4lvXcJ9z6Xn13YgAUyQlkAXQrNN7NC8wIqD7o7AHihzyAgOhjr+rsSQBN1tIFEe72q822yeDx3+cU0ATUtbWw9eP526EE1BwDCkANe7az8YAABed2WxJ6c+4huZc4gNqA6PxbUrgdZNbieLm7tX3BCT0jIA49p9I5wLe+3WzIWe72G4T4pv/iXff+AWl5K00Z3WCpCjPoP3z3bj1UEiBiePr/AsQwTC5AADSyFv0gL/hX1i8AXJ1m9sTn+tkqEnIcOTkBZR1LmrIQLoWrOIqwzpAgwYrOEIdl9DXlAQLo2U2jrmpv4yKeBZOhzicgz+0iwGupd4JEzGAnjsEI4KxvN9c5OnA81EKEA46w+BpOHVb3OopcMpXleJpNCo3jgyX/qqK6zidCUJfW4njVVLLUPZdMcksFpDZ7NTjctJCOTRvrv3O6VbWeBQhgt2839zn7G0MuFPLy55f1BX+s2mmTpy59woap9Q7lcgBZNF7jtuRsQEoBFX7jq0o7jSQUCVQWxy1TmIVgggEMVs6zLU+fwwFMqR7ShdUHnailiJ4TdXpVp8XZNFzDCGXWOdT3FHkosuyEKP7ogiQ9CxfQtVXZKH2mkGTxpFCRxDkHEIfyk3TL5aGkUOGymq5EesjJzk3hkNOHj6EwSVcZMZw284vkCKqC0jykDx81UjAOFeMKqHEyAL7Xn+cxTGEPJSkCOVguqY7jVtVpbJrrDCUpIilPbpJqvI6ji57tLEuoP742F6C61zm/6Vaj6B/1bGdNokxSlXAvHkorVyTKpFUJediy0BnKKlckifAuKFsBE4dcVrkisW7Nc3cQ4NNsiJI4dAt5KCkHaTmEXeYnUv9UUJ6qI9RB7KEsRTgXXFpSnS1wpz/mLXtyhVwmIOCXLNmzBL6cwrRdyxiaSHJRFiCJnOKAtMviuDCJIo+AmBlbTAplWbYsOY8hF7dAWZYtS86jhx68hxKbuzDDM4bzoYHmJuRKLH2ib4hmGFlwSVz8DGlfZyUkVvZXH+nVdnANwy5yCwO6+34IQNKGFAakBNQ8d4gAwcd/WuvAvpSKKm7PVfey8eH/Zc9uRve0zAIhWiauFNSbSU1envFTWeOwQg1exFJHhw0gmgznEdvcT1dm0oDn7gDB5PMZhC73HijNc38BZ82LYsHC5cgAAAAASUVORK5CYII=" width="24" height="24">
+							<p>Type :</p>
 						</div>
-						<div id="drink"class="panel-heading">
-							<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion-elm" href="#collapse4">Drinks</a>
-							</h4>
-							<div id="collapse4" class="panel-collapse collapse">
-								<div class="panel-body">
-									<ul class="results" id="results-drink">
-									</ul>
-								</div>
-							</div>
+					</div>
+					<div>
+						<div class="information-precise">
+							<img class="icon icons8-Topic" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAFF0lEQVRoQ+1aW5LaRhQ9V3JC/jJeQSYrMLMC4x8HUhHG3y7zWMGQFZhZQfAKQLjyPTJKBcU/w6zAeAUmK/Dw6cpIN9WAcEtqPRDi4SrzS+t2n9v3eW4TCv41bgZn7n/6I2I+B7RztXhvzkRz/Tv3g/Wkc1fkEagIYYZjPgOoQeAKQDEg4nbiOYOmAFt2tfV21/PkBtSYDM5d0l8RuAHQ2a4HWX3PdwyydHavrFpnnkfm1oDWQAYEVPJsmPUbBqY6u51tgWUGtPSNz+JG0E07FDNuCSw0rNQyE5XBOCPC41RZQF8vuVdZfS0ToN8mbyoaeYM4/2DGv0RseaxZf9VeTtMOKf+/lt1gpgYRflJ/y3OPtU4W2amA6o55CVBftZG4CWjUt395aW0DIm6t8c+bBjzuxt0cMzp2rTlM2isRkOGMhK+0wwIY+MBM3SwaywNU3BoR9wl4pNh7aFebnTi5sYDiwID5alxr9fIcdNtv6hOzB6JX24BSAjKcUZeAP0KCFh5TY1+3kmSGxCzM7Ed5TZz5RQCtnJRvwmDuNb3y99MXs221XMT6X9/9WX7guSLYBEB5TE/CCg4AEqHZ+6x9DCXKxTHB+ApRg+K5VvIu5JAeAFSfmEMQtWStqrRQhNbzyFBaD7M5rrU2gWsDSFQAHukfAxsdMABkBagKFBq7P/sVxQaQ4YwsAp75gkWytGvNLQvNrMfabZ0xGc0DSVi6pSUg1e2ckqmF4atMz7+lJaBwmBaJ0642y7vpcb9fh2+Jgd/talMkY6DumO8B2gDIUmLs97jp0o3JqE2EwZeVPBtXWxe0CtX6J1mE7GTpoo+zQuUmWsl9SGF7/BrMzVeh4Yxmcr0n/J4iZU4orh9H/9l2DedN4UcUiesnmHvi4KnO/g1QNmM4zKpvN3QYPeffRXlDoo8n5muphru1a829UlT5IQS/NCajqcw/MNFziiYovhtXWw+L2nSfcuqO+Unu3e41/WJVy4Wq11MuTH0FKQrUxbjaPPNruT5AlxttfgXJNdKMrs8c2z6IuigrW7lPs1LJVtWfwn8EP/ilwQs5GE74liIlj9SMbgCpmibhZMdieuJufU2WvJf/l9udAEkSbsOBKKtyaPOS91uzUjeh3i1AFShoLF1MDDb8FwOWXW0+PyYQqV24JqAhnyUckSNEYzjRio8ZSOSTDwFWTU3z63G1FRjvKKngumMGw/iRQanAiEZUL7mVcCSOJetVpOOhuYZVFaNdyz6ztoaFVnLPVWklbZwSaHEPOnlYzqXQU8xvE6npREBhNugQJZGYqBMgTD5Cci7NjN1G0tw1FpCKVdlXXlqblmBtu7FjT+CtXnLbadVL0sArECKzUsPGu9FmEGw/bd6qIqBYIx5mMFN5/bYhidRcMNATJGKWaKoeeEVIPCAtIKyn5EIJxfVSzKYGr7fNaD+ah1RgUqjhVe5aTsmLeYCRA4h/e+HSRzUkjo0qRT7CYEA8i5nqJXeY5idJprdqH1aTu0CNJLXkkVG6KBB1z71UTciXlYUY9wMggvCNwBgx8D946kGbPvjhfrYLCBmgkqz3kxczuv67gGUk0rTHzNRO8JOjDJYDgJJG50Q0Z+bzbK+s+LVW8npFaTpLRFOtobpjiiFx7kmdMC8G9Q497o8DTHVnJB7gRew8TUPCiZmpfypANlFOVYTGgRGlB4Chzq61TW5IU06R//s0VpuIyyJzB4QT7oh5xpo207+/nx7bP7IA/x/xoQCt6j9CowAAAABJRU5ErkJggg==" width="24" height="24">
+							<p>Description: 
 						</div>
-					<button type="submit" id="savemenu" href="#collapse5" data-toggle="collapse">Save the menu</button>
 					</div>
 				</div>
-						
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h4 class="panel-title">
-							<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Reservation</a>
+				<div id="line"></div>
+				<div>
+					<h4>Picture</h4>
+					<img src="images/logo.png">
+				</div>
+				<div id="line"></div>
+			</div>
+
+			<div id="Paris" class="w3-container city">
+				<div class="panel-group" id="accordion">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion"
+									href="#accordion2">Menu</a>
 							</h4>
+							<div class="panel-group" id="accordion2">
+								<div class="panel panel-default">
+									<div id="starters" class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion2"
+												href="#collapse1">Starters</a>
+										</h4>
+									</div>
+									<div id="collapse1" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul class="results" id="results-starters">
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div id="main" class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion2"
+												href="#collapse2">Main dishes</a>
+										</h4>
+									</div>
+									<div id="collapse2" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul class="results" id="results-main">
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div id="dessert" class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion2"
+												href="#collapse3">Desserts</a>
+										</h4>
+									</div>
+									<div id="collapse3" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul class="results" id="results-dessert">
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="panel panel-default">
+									<div id="drink" class="panel-heading">
+										<h4 class="panel-title">
+											<a data-toggle="collapse" data-parent="#accordion2"
+												href="#collapse4">Drinks</a>
+										</h4>
+									</div>
+									<div id="collapse4" class="panel-collapse collapse">
+										<div class="panel-body">
+											<ul class="results" id="results-drink">
+											</ul>
+										</div>
+									</div>
+								</div>
+								<button type="submit" id="savemenu" href="#collapse5"
+									data-parent="#accordion2" data-toggle="collapse">Save
+									the menu</button>
+							</div>
+
+
+						</div>
 					</div>
+					<div class="panel panel-default" id="reservation-panel">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" data-parent="#accordion2"
+									href="#collapse5">Reservation</a>
+							</h4>
+						</div>
 						<div id="collapse5" class="panel-collapse collapse">
 							<div class="panel-body">
 								<div class="top-rowR">
 									<div class="field-wrap1">
-										<select name="Select_1" id="number-people" tabindex="1" aria-label="persons">
+										<select name="Select_1" id="number-people" tabindex="1"
+											aria-label="persons">
 											<option value="1">1 person</option>
 											<option value="2">2 people</option>
 											<option value="3">3 people</option>
@@ -144,74 +220,82 @@
 											<option value="9">9 people</option>
 										</select>
 									</div>
-									
+
 									<div class="row">
 										<div class='col-sm-6'>
 											<div class="form-group">
 												<div class='input-group date' id='datetimepicker5'>
-													<input type='text' id="date-time" name = "something" class="form-control" placeholder="Date and time" /> <span
+													<input type='text' id="date-time" name="something"
+														class="form-control" placeholder="Date and time" /> <span
 														class="input-group-addon"> <span
 														class="glyphicon glyphicon-calendar"></span>
 													</span>
 												</div>
-											</div>											
+											</div>
 										</div>
-									</div>	
+									</div>
 								</div>
-								<button type="submit"  id="book"  data-toggle="collapse">Book a table</button>
+								<button type="submit" id="book" data-toggle="collapse">Book
+									a table</button>
 							</div>
 						</div>
 					</div>
-  			</div>
-  		</div>
-  			
-  		<div id="Tokyo" class="w3-container city">
-  			<div class="panel-group" id="accordion">
+				</div>
+
+
+			</div>
+		</div>
+
+		<div id="Tokyo" class="w3-container city">
+			<div class="panel-group" id="accordion">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapsereview">Review</a>
+							<a data-toggle="collapse" data-parent="#accordion"
+								href="#collapsereview">Review</a>
 						</h4>
 					</div>
 					<div id="collapsereview" class="panel-collapse collapse in">
-						<div class="panel-body" id ="reviewtab">
-						<button id="myBtn">Add Review</button>
+						<div class="panel-body" id="reviewtab">
+							<button id="myBtn">Add Review</button>
 							<div id="myModal" class="modal">
 								<div class="modal-content">
-		    							<span class="close">&times;</span>
-		    							  
-		    								<div class="field-wrap-restaurant">
-		    									<h2>Please comment: :</h2>
-												<input class="selecttyperev" placeholder="Review" type="text" id="reviewtext" name="rest-name" required autocomplete="off" />
-												<br>
-												<select class="selecttyperev" name="Select_1" id="number-stars" tabindex="1" aria-label="persons">
-												<option value="1">1 Star</option>
-												<option value="2">2 Star</option>
-												<option value="3">3 Star</option>
-												<option value="4">4 Star</option>
-												<option value="5">5 Star</option>
-												</select>
-											</div>														
-											<button type="submit" id="save-reviw-restaurant" class="button button-block">Send</button>
-											
-		  							</div>
-		  						</div>
-	
+									<span class="close">&times;</span>
+
+									<div class="field-wrap-restaurant">
+										<h2>Please comment: :</h2>
+										<input class="selecttyperev" placeholder="Review" type="text"
+											id="reviewtext" name="rest-name" required autocomplete="off" />
+										<br> <select class="selecttyperev" name="Select_1"
+											id="number-stars" tabindex="1" aria-label="persons">
+											<option value="1">1 Star</option>
+											<option value="2">2 Star</option>
+											<option value="3">3 Star</option>
+											<option value="4">4 Star</option>
+											<option value="5">5 Star</option>
+										</select>
+									</div>
+									<button type="submit" id="save-reviw-restaurant"
+										class="button button-block">Send</button>
+
+								</div>
+							</div>
+
 						</div>
 					</div>
-  				</div>
-  			</div>
-  		</div>
-	
+				</div>
+			</div>
 		</div>
-		</div>
+
+	</div>
+	</div>
 	<!-- </div> -->
 
 	<!-- Calendar JavaScript -->
 	<!-- 	<script type="text/javascript" src="./js/prototype.js"></script>
 	<script type="text/javascript" src="./js/calendarview.js"></script> -->
 	<!-- Menu Toggle Script -->
-	
+
 	<script type="text/javascript" src="js/map.js"></script>
 	<script type="text/javascript" src="./js/getmenu.js"></script>
 	<script

@@ -85,6 +85,7 @@ function createRestaurant(){
 	var pricerange = $('#price-range').val();
 	resname = $('#rest-name').val();
 	var address = $('#rest-address').val();
+	var res = address.split(",");
 	//var img = $('#rest-image').val().split('\\').pop();
 	var img = $('#rest-image').val().replace(/C:\\fakepath\\/i, '');
 	var ownerName = localStorage.getItem("name");
@@ -118,7 +119,7 @@ function createRestaurant(){
 	// if I know my PHP will return an error
 	var reqmenu = '"menu" : { "starters" : [{"starterItem" : "'+starters[0]+'"},{"starterItem" : "'+starters[1]+'"}],"main" : [{"mainItem" : "'+mains[0]+'"},{"mainItem" : "'+mains[1]+'"}],"dessert" : [{"dessertItem" : "'+desserts[0]+'"},{"dessertItem" : "'+desserts[1]+'"}],"drink" : [{"drinkItem" : "'+drinks[0]+'"},{"drinkItem" : "'+drinks[1]+'"}]}';
 
-	var reqaddrest = '{"img":"C:/Users/Ammar/tableeat-app/icon.png","name" : "'+resname+'","type" : "'+typeoffood+'","description" : "'+description+'","priceRange" : "'+price_range+'","owner" : {"ownername" : "'+ownerName+'", "owneremail" : "'+ownerEmail+'"},'+reqmenu+',"address" : {"street" : "'+address+'", "city" : "'+address+'", "zipode" : "'+address+'"}}';
+	var reqaddrest = '{"img":"C:/Users/Ammar/tableeat-app/icon.png","name" : "'+resname+'","type" : "'+typeoffood+'","description" : "'+description+'","priceRange" : "'+price_range+'","owner" : {"ownername" : "'+ownerName+'", "owneremail" : "'+ownerEmail+'"},'+reqmenu+',"address" : {"street" : "'+res[0]+'", "city" : "'+res[1]+'", "zipode" : "'+res[2]+'"}}';
 	console.log(reqaddrest);
 	
 //remove non-printable and other non-valid JSON chars

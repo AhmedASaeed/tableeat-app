@@ -28,8 +28,8 @@
 		<!-- Sidebar -->
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
-					<li class="sidebar-brand"><a id="email" href="account.html">emailuser@gmail.com</a></li>
 					<img src="images/profile.png" href="account.html" id="profile" height="50" width="50">
+					<li class="sidebar-brand"><a id="name-user" href="account.html">emailuser@gmail.com</a></li>
 				<li><a href="search.html">Search for a restaurant</a></li>
 				<li><a href="account.html">My account</a></li>
 				<li><a href="about.html">About us</a></li>
@@ -45,9 +45,14 @@
 		</div>
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
-		
+		<div id="search">
 			<input id="pac-input" class="controls" type="text" placeholder="Search Box">
-			<div id="map"></div>
+			</div>
+			
+			<div id="map">
+			</div>
+			<img id="clear-button" onclick="clearMarkers()" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAABoklEQVRoQ+2Y4U3EMAyFE6UDsAlU7QDHBrABTAYbwAbcAK0KmzBAq6BI9FSVI7bjl0MRub+X2O/zcxMr1hT+s4XrNxXgrx2sDlQHlBX4Py00TdPVsiyHvu9flUWLbh+G4c45d2zb9pOTh+VAED/P85u19sZa+9h13TMnuHTNOI4P3vsn7/170zS3HAgSYCt+FZQDYhW/5uBCkADBUmPMy76aSIi9+E2ue6plSYAQ7LcECAhtbBZALgit+KCLDYCGQIgXA6AgUOKTALQQSPHJAKkQaPEqAClEDvFqAC5ELvEQAAoi/B/Gg1wXoegYjc02kdv0xzbEBXgaa6QDlxYCKR7WQluomBNo8RVg306c7wDtQv2Iiz9GOZcUZ03qaahqIYkwyVoJTDJAiqCUPRRMEoBGiGbvORgxAEIAIkbSKIFMjIrFdgCVkDN2SC47FkAO8SuINjYJUPzD1vej7tEYc336cDK8j55x4sM5d6DeR0kHgugthKQ/qTM8MgyyxIvG6aKf16WVvOR6VgtdUpA0VwWQVgy9vjqArqg0XnVAWjH0+i9nXMRA6rVM/AAAAABJRU5ErkJggg==" width="24" height="24">
+			
 			
 			<div class="container-fluid" id="list">
   				<ul class="results" id = "results">

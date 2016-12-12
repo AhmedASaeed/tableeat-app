@@ -20,9 +20,13 @@ $(document).ready(function(){
 	email.innerHTML = username;
 	email_account.innerHTML = username;
 	name_user.innerHTML = name;
+	
 });
 
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+
+var nameUser = document.getElementById('name-user');
+nameUser.innerHTML = localStorage.getItem("name");

@@ -85,6 +85,7 @@ function createRestaurant(){
 	var pricerange = $('#price-range').val();
 	resname = $('#rest-name').val();
 	var address = $('#rest-address').val();
+	
 	//var img = $('#rest-image').val().split('\\').pop();
 	var img = $('#rest-image').val().replace(/C:\\fakepath\\/i, '');
 	var ownerName = localStorage.getItem("name");

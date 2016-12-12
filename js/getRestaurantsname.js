@@ -77,7 +77,19 @@
 						restauranImageData[restauranImageData.length] = obj.data;
 						});
 					});
-					console.log(restauranImageData[0]);
+					
+					var arrayBuffer = restauranImageData[0];
+					   var bytes = new Uint8Array(arrayBuffer);
+					   var blob        = new Blob([bytes.buffer]);
+
+					   var image = document.getElementById('image');
+
+					   var reader = new FileReader();
+					   reader.onload = function(e) {
+					       image.src = e.target.result;
+					   };
+					   reader.readAsDataURL(blob);
+					   
 					
 					nbr_rest = restaurantsnames.length;
 					updateRestaurants();
@@ -104,6 +116,7 @@
 
 				for (i = 0; i < nbr_rest; i++)
 					handleElement(i);
+				
 			});
 	
 	function base64encode(binary) {
@@ -112,7 +125,7 @@
 	
 	function updateRestaurants(){
 		for (i = 0; i < nbr_rest; i++){
-			$('#list .results').append('<li class="restaurant"><img src="images/logo.png"><h3 class="name" id="rest'+i+'">' + restaurantsnames[i] + '</h3><p>' + type[i] + '</p><p>' + description[i] + '</p><p>' + priceRange[i] + '</p></li><hr>');
+			$('#list .results').append('<div id="list-restaurants"><li class="restaurant"><img id="image" src="images/logo.png"><h3 class="name" id="rest'+i+'">' + restaurantsnames[i] + '</h3><p>' + type[i] + '</p><p>' + description[i] + '</p><p>' + priceRange[i] + '</p></li><hr></div>');
 		}
 	}
 }());

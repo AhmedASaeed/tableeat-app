@@ -493,7 +493,9 @@ font-family: 'Titillium Web', sans-serif;
 text-align : center;
 }
 
-
+#profile-account{
+	margin-right: 50px;
+}
 
 #list{
   background-color: #ffffff;

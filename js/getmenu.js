@@ -346,7 +346,7 @@ function getRestaurantInformation(){
 				recursiveGetProperty(data, "owneremail", function(obj) {
 					owneremail = obj;
 				});
-				recursiveGetProperty(data, "type", function(obj) {
+				recursiveGetProperty(data, "typeOfFood", function(obj) {
 					type = obj;
 				});
 				
